@@ -69,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (playerHasHorizontalSpeed)
         {
-            transform.localScale = new Vector2(Mathf.Sign(body.velocity.x), 1f);
+            transform.rotation = new Quaternion(0, Mathf.Sign(body.velocity.x) * 180, 0, 1);
         }
     }
 }

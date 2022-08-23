@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3150763009519450575}
   m_Layer: 0
   m_Name: pfCoffeeMug
-  m_TagString: Untagged
+  m_TagString: CoffeeMug
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5888485337696632915}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.238, y: -3.7, z: 0.7345559}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   verticalSpeed: 4
+  rb: {fileID: 3150763009519450575}
 --- !u!61 &2493840723068334993
 BoxCollider2D:
   m_ObjectHideFlags: 0
