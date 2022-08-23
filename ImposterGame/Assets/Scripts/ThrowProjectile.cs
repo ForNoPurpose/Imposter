@@ -25,10 +25,6 @@ public class ThrowProjectile : MonoBehaviour
     private void Attack()
     {
         cooldownTimer = 0;
-        // pool projectile
-        var go = ObjectPool.SharedInstance.GetPooledObject();
-        if (go == null) return;
-        go.transform.position = firePoint.position;
-        go.GetComponent<Projectile>().SetDirection(Mathf.Sign(transform.localScale.x));
+        ObjectPoolManager.instance.SpawnFromObjectPool("CoffeeMug", firePoint.position, Quaternion.identity);
     }
 }
