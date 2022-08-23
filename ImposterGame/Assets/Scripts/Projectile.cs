@@ -26,6 +26,7 @@ public class Projectile : MonoBehaviour
     {
         float movementSpeed = speed * direction;
         rb.velocity = new Vector2(movementSpeed, verticalSpeed);
+        transform.rotation = Quaternion.identity;
     }
 
     private void Update()
