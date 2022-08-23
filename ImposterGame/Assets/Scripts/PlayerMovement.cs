@@ -69,7 +69,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (playerHasHorizontalSpeed)
         {
-            transform.rotation = new Quaternion(0, Mathf.Sign(body.velocity.x) * 180, 0, 1);
+            float rot = body.velocity.x > Mathf.Epsilon ? 0 : 180;
+            transform.rotation = new Quaternion(0, rot, 0, 1);
         }
     }
 }

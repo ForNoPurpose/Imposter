@@ -24,6 +24,7 @@ public class Projectile : MonoBehaviour
     {
         Debug.Log("Spawn coffee mug");
         Invoke("Disable", lifetime);
+        SetDirection();
         MugFlightPath();
     }
 
@@ -32,12 +33,20 @@ public class Projectile : MonoBehaviour
 
     }
     private void MugFlightPath()
-    {      
-        rb.velocity = new Vector2(speed, verticalSpeed);
+    {
+        float movementSpeed = speed * _direction;
+        rb.velocity = new Vector2(movementSpeed, verticalSpeed);
         transform.rotation = Quaternion.identity;
     }
+
     private void Disable()
     {
         this.gameObject.SetActive(false);
+    }
+
+    private void SetDirection()
+    {
+        float sign = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().transform.rotation.y;
+        _direction = sign > Mathf.Epsilon ? -1 : 1;
     }
 }
