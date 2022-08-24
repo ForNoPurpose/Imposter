@@ -11,12 +11,23 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D body;
     private BoxCollider2D playerCollider;
     private Animator playerAnimator;
+    private PlayerInput playerInput;
+    private PlayerInputActions inputActions;
+
+    public WorldLayer.LayerNumber worldPosition = WorldLayer.LayerNumber.Middleground;
 
     private void Awake()
     {
         body = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<BoxCollider2D>();
         playerAnimator = GetComponent<Animator>();
+        playerInput = GetComponent<PlayerInput>();
+
+        inputActions = new PlayerInputActions();
+        inputActions.Player.Enable();
+        inputActions.Player.Jump.performed += Jump;
+
+        inputActions.Player.Move.performed += EnterExitDoor;
     }
 
     private void Update()
@@ -30,12 +41,7 @@ public class PlayerMovement : MonoBehaviour
         return new Vector2(body.position.x, body.position.y);
     }
 
-    private void OnMove(InputValue value)
-    {
-        moveInput = value.Get<Vector2>();
-    }
-
-    private void OnJump(InputValue value)
+    private void Jump(InputAction.CallbackContext context)
     {
         RaycastHit2D feetOnGround = Physics2D.Raycast(playerCollider.bounds.center, Vector3.down, playerCollider.bounds.extents.y + 0.03f, LayerMask.GetMask("Ground"));
         Debug.DrawRay(playerCollider.bounds.center, Vector3.down, Color.red, 2f);
@@ -45,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Can't Jump"); 
             return;
         }
-        if (value.isPressed)
+        else
         {
             body.velocity += new Vector2(0, jumpSpeed);
             //Debug.DrawLine(playerCollider.bounds.center, playerCollider.bounds.center - new Vector3(0,playerCollider.bounds.extents.y + 0.03f, 0), Color.red, 5f);
@@ -54,7 +60,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Run()
     {
-        Vector2 playerVelocity = new Vector2(moveInput.x * speed, body.velocity.y);
+        moveInput = inputActions.Player.Move.ReadValue<Vector2>();
+        Vector2 playerVelocity = new(moveInput.x * speed, body.velocity.y);
         body.velocity = playerVelocity;
 
         if (Mathf.Abs(body.velocity.x) > Mathf.Epsilon)
@@ -71,6 +78,19 @@ public class PlayerMovement : MonoBehaviour
         {
             float rot = body.velocity.x > Mathf.Epsilon ? 0 : 180;
             transform.rotation = new Quaternion(0, rot, 0, 1);
+        }
+    }
+
+    private void EnterExitDoor(InputAction.CallbackContext context)
+    {
+        if (context.ReadValue<Vector2>().y > 0.95f && worldPosition > WorldLayer.LayerNumber.Background)
+        {
+            //Debug.Log(inputActions.Player.Move.ReadValue<Vector2>());
+            worldPosition -= 1;
+        }
+        if(context.ReadValue<Vector2>().y < -0.95f && worldPosition < WorldLayer.LayerNumber.Foreground)
+        {
+            worldPosition += 1;
         }
     }
 }
