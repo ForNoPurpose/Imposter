@@ -12,6 +12,11 @@ TagManager:
   - 
   - Water
   - UI
+  - SubLevelBackgroundWall
+  - SubLevelBackgroundObjects
+  - SubLevelGround
+  - BackgroundWall
+  - BackgroundObjects
   - Ground
   - 
   - 
@@ -33,12 +38,25 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
   m_SortingLayers:
+  - name: SubLevelBackgroundWall
+    uniqueID: 3339033815
+    locked: 0
+  - name: SubLevelBackgroundObjects
+    uniqueID: 2017673333
+    locked: 0
+  - name: SubLevelGround
+    uniqueID: 2043806597
+    locked: 0
+  - name: BackgroundWall
+    uniqueID: 1737105569
+    locked: 0
+  - name: BackgroundObjects
+    uniqueID: 1456782873
+    locked: 0
+  - name: Ground
+    uniqueID: 2377923681
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
