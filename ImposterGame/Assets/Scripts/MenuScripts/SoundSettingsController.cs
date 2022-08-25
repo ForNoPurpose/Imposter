@@ -8,7 +8,7 @@ public class SoundSettingsController : MonoBehaviour
 {
     [SerializeField] private TMP_Text volumeTextValue = null;
     [SerializeField] private Slider volumeSlider = null;
-    [SerializeField] private float defaultVolume = 1.0f;
+    [SerializeField] private float defaultVolume = 0.5f;
 
     public void SetVolume(float volume)
     {
