@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private PlayerInputActions inputActions;
 
     public WorldLayer.LayerNumber worldPosition = WorldLayer.LayerNumber.Middleground;
+    //public bool playerNearDoor = false;
 
     private void Awake()
     {
@@ -28,6 +29,8 @@ public class PlayerMovement : MonoBehaviour
         inputActions.Player.Jump.performed += Jump;
 
         inputActions.Player.Move.performed += EnterExitDoor;
+
+
     }
 
     private void Update()
@@ -83,14 +86,21 @@ public class PlayerMovement : MonoBehaviour
 
     private void EnterExitDoor(InputAction.CallbackContext context)
     {
-        if (context.ReadValue<Vector2>().y > 0.95f && worldPosition > WorldLayer.LayerNumber.Background)
+        if(context.ReadValue<Vector2>().y > 0.95f)
         {
-            //Debug.Log(inputActions.Player.Move.ReadValue<Vector2>());
-            worldPosition -= 1;
-        }
-        if(context.ReadValue<Vector2>().y < -0.95f && worldPosition < WorldLayer.LayerNumber.Foreground)
-        {
-            worldPosition += 1;
+            switch (GameController.gameInstance.CheckPlayerNearDoor(transform.position))
+            {
+                case GameController.Direction.ToSubLevel:
+                    if (worldPosition > WorldLayer.LayerNumber.Background)
+                        worldPosition -= 1;
+                    else worldPosition += 1;
+                    break;
+                case GameController.Direction.ToForeLevel:
+                    if (worldPosition < WorldLayer.LayerNumber.Foreground)
+                        worldPosition += 1;
+                    else worldPosition -= 1;
+                    break;
+            }
         }
     }
 }
