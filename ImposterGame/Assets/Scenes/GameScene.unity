@@ -302,7 +302,7 @@ GameObject:
   - component: {fileID: 617260837}
   - component: {fileID: 617260836}
   - component: {fileID: 617260835}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SubLevelGroundTilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
