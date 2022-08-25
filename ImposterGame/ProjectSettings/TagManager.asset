@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - CoffeeMug
+  - UI
+  - MainMenu
   layers:
   - Default
   - TransparentFX
