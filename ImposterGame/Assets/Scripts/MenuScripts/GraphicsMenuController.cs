@@ -15,6 +15,8 @@ public class GraphicsMenuController : MonoBehaviour
     public TMP_Dropdown resolutionDropDown;
     private Resolution[] resolutions;
 
+    [SerializeField] private TMP_Dropdown _qualityDropDown;
+
     public void Start()
     {
         resolutions = Screen.resolutions;
@@ -57,5 +59,21 @@ public class GraphicsMenuController : MonoBehaviour
 
         PlayerPrefs.SetInt("masterQuality", _qualityLevel);
         QualitySettings.SetQualityLevel(_qualityLevel);         
+    }
+    public void ResetGraphicsButton(string MenuType)
+    {
+        if (MenuType == "Graphics")
+        {
+            brightnessSlider.value = defaultBrightness;
+            brightnessTextValue.text = defaultBrightness.ToString("0.0");
+
+            _qualityDropDown.value = 0;
+            QualitySettings.SetQualityLevel(0);
+
+            Resolution currentResolution = Screen.currentResolution;
+            Screen.SetResolution(currentResolution.width, currentResolution.height, Screen.fullScreen);
+            resolutionDropDown.value = resolutions.Length;
+            ApplyGraphicsSettings();
+        }
     }
 }
