@@ -22,7 +22,7 @@ public class Projectile : MonoBehaviour
 
     private void OnEnable()
     {
-        Debug.Log("Spawn coffee mug");
+        //Debug.Log("Spawn coffee mug");
         Invoke("Disable", lifetime);
         SetDirection();
         MugFlightPath();
