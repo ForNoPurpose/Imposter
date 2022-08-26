@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class PlayMenuScript : MonoBehaviour
+public class PlayMenuController : MonoBehaviour
 {
     private string _levelToLoad;
     [SerializeField] private GameObject noSavedGameDialog = null;

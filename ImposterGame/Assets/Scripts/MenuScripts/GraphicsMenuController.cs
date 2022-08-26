@@ -8,7 +8,7 @@ public class GraphicsMenuController : MonoBehaviour
 {
     [SerializeField] private Slider brightnessSlider;
     [SerializeField] private TMP_Text brightnessTextValue;
-    [SerializeField] private float defaultBrightness = 1f;
+    [SerializeField] private float defaultBrightness = 1.0f;
     private int _qualityLevel;
     private float _brightnessLevel;
 
@@ -56,9 +56,10 @@ public class GraphicsMenuController : MonoBehaviour
     public void ApplyGraphicsSettings()
     {
         PlayerPrefs.SetFloat("masterBrightness", _brightnessLevel);
+        //TODO change brightness with post processing
 
         PlayerPrefs.SetInt("masterQuality", _qualityLevel);
-        QualitySettings.SetQualityLevel(_qualityLevel);         
+        QualitySettings.SetQualityLevel(_qualityLevel);
     }
     public void ResetGraphicsButton(string MenuType)
     {

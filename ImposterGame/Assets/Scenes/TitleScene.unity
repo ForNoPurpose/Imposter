@@ -1651,7 +1651,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0.5
+  m_text: '1.0
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
@@ -2278,7 +2280,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Delegates: []
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 646310378}
+          m_TargetAssemblyTypeName: GraphicsMenuController, Assembly-CSharp
+          m_MethodName: ApplyGraphicsSettings
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 15
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 646310378}
+          m_TargetAssemblyTypeName: GraphicsMenuController, Assembly-CSharp
+          m_MethodName: ApplyGraphicsSettings
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &459647825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2663,7 +2697,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.2, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3869,7 +3903,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brightnessSlider: {fileID: 1418425359}
   brightnessTextValue: {fileID: 322440594}
-  defaultBrightness: 0.5
+  defaultBrightness: 1
   resolutionDropDown: {fileID: 52737032}
   _qualityDropDown: {fileID: 676634670}
 --- !u!1 &647943008
@@ -4683,8 +4717,8 @@ RectTransform:
   m_Father: {fileID: 1640086848}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMin: {x: 0.2, y: 0}
+  m_AnchorMax: {x: 0.2, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 4.647, y: 55.4808}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4962,6 +4996,7 @@ RectTransform:
   - {fileID: 646310375}
   - {fileID: 2076400294}
   - {fileID: 1551963483}
+  - {fileID: 1848430060}
   - {fileID: 1521301045}
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -5330,7 +5365,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -453.77005, y: -0.0000076293945}
+  m_AnchoredPosition: {x: -453.77002, y: -0.0000076293945}
   m_SizeDelta: {x: -469.5498, y: -55.564}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1007496963
@@ -6926,6 +6961,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Delegates:
   - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 646310378}
+          m_TargetAssemblyTypeName: GraphicsMenuController, Assembly-CSharp
+          m_MethodName: ResetGraphicsButton
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Graphics
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 15
     callback:
       m_PersistentCalls:
         m_Calls:
@@ -8605,9 +8656,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 822130448}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 5
   m_WholeNumbers: 0
-  m_Value: 0.5
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -8947,7 +8998,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 921546685}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1521301046
 MonoBehaviour:
@@ -9561,7 +9612,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -218.99496, y: 0.000076293945}
+  m_AnchoredPosition: {x: -218.995, y: 0.000076293945}
   m_SizeDelta: {x: -469.5498, y: -55.564}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1653062496
@@ -9937,7 +9988,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 638638866}
-          m_TargetAssemblyTypeName: PlayMenuScript, Assembly-CSharp
+          m_TargetAssemblyTypeName: PlayMenuController, Assembly-CSharp
           m_MethodName: NewGameButtonSelected
           m_Mode: 1
           m_Arguments:
@@ -9953,7 +10004,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 638638866}
-          m_TargetAssemblyTypeName: PlayMenuScript, Assembly-CSharp
+          m_TargetAssemblyTypeName: PlayMenuController, Assembly-CSharp
           m_MethodName: NewGameButtonSelected
           m_Mode: 1
           m_Arguments:
@@ -10637,6 +10688,60 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 226.8988}
   m_SizeDelta: {x: 583.3199, y: 148.0483}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1848430059
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1848430060}
+  - component: {fileID: 1848430061}
+  m_Layer: 0
+  m_Name: LoadPreferences
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1848430060
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848430059}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 36.20534, y: -41.401264, z: -791.99994}
+  m_LocalScale: {x: 9.353072, y: 9.353072, z: 9.353072}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 921546685}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1848430061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848430059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7b8a6bcce721f4ab5ad686f4f4de72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canUse: 1
+  mainMenuController: {fileID: 2062395631}
+  playMenuController: {fileID: 638638866}
+  graphicsMenuController: {fileID: 646310378}
+  soundSettingsController: {fileID: 2076400296}
+  volumeTextValue: {fileID: 903954229}
+  volumeSlider: {fileID: 45146162}
+  brightnessSlider: {fileID: 1418425359}
+  brightnessTextValue: {fileID: 322440594}
+  _qualityDropDown: {fileID: 676634670}
 --- !u!1 &1851855314
 GameObject:
   m_ObjectHideFlags: 0
@@ -10869,7 +10974,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 638638866}
-          m_TargetAssemblyTypeName: PlayMenuScript, Assembly-CSharp
+          m_TargetAssemblyTypeName: PlayMenuController, Assembly-CSharp
           m_MethodName: LoadGameButtonSelected
           m_Mode: 1
           m_Arguments:
@@ -10885,7 +10990,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 638638866}
-          m_TargetAssemblyTypeName: PlayMenuScript, Assembly-CSharp
+          m_TargetAssemblyTypeName: PlayMenuController, Assembly-CSharp
           m_MethodName: LoadGameButtonSelected
           m_Mode: 1
           m_Arguments:
@@ -11714,10 +11819,10 @@ Camera:
   field of view: 60
   orthographic: 1
   orthographic size: 5
-  m_Depth: -1
+  m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2147483647
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
