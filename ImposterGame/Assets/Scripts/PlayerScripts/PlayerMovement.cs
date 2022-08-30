@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private BoxCollider2D playerCollider;
     private Animator playerAnimator;
     private PlayerInput playerInput;
-    private PlayerInputActions inputActions;
+    public PlayerInputActions inputActions;
 
     public WorldLayer.LayerNumber worldPosition = WorldLayer.LayerNumber.Middleground;
     //public bool playerNearDoor = false;

@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using CustomUtilities;
+using System.Net;
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] private float speed = 5f;
-    [SerializeField] private float verticalSpeed = 2f;
+    //[SerializeField] private float speed = 5f;
+    //[SerializeField] private float verticalSpeed = 2f;
     private float _direction;
     private bool hit;
     private float lifetime = 1.5f;
@@ -34,8 +36,9 @@ public class Projectile : MonoBehaviour
     }
     private void MugFlightPath()
     {
-        float movementSpeed = speed * _direction;
-        rb.velocity = new Vector2(movementSpeed, verticalSpeed);
+        //float movementSpeed = speed * _direction;
+        print(Utils.GetTrajectory(transform).initialVelocity);
+        rb.velocity = Utils.GetTrajectory(transform).initialVelocity;
         transform.rotation = Quaternion.identity;
     }
 
