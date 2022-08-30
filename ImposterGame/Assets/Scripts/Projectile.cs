@@ -15,31 +15,44 @@ public class Projectile : MonoBehaviour
     private BoxCollider2D boxCollider;
     public Rigidbody2D rb;
 
-
+    public bool held = true;
+    public bool thrown = false;
 
     private void Awake()
     {
         boxCollider = GetComponent<BoxCollider2D>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void OnEnable()
     {
         //Debug.Log("Spawn coffee mug");
-        Invoke("Disable", lifetime);
+        //Invoke("Disable", lifetime);
+        thrown = false;
         SetDirection();
-        MugFlightPath();
+        //MugFlightPath();
     }
 
     private void Update()
     {
-
+        if (held)
+        {
+            rb.simulated = false;
+        }
+        else
+        {
+            rb.simulated = true;
+            if(!thrown) Disable();
+        }
     }
-    private void MugFlightPath()
+    public void MugFlightPath()
     {
+        rb.simulated = true;
         //float movementSpeed = speed * _direction;
         print(Utils.GetTrajectory(transform).initialVelocity);
         rb.velocity = Utils.GetTrajectory(transform).initialVelocity;
         transform.rotation = Quaternion.identity;
+        Invoke("Disable", lifetime);
     }
 
     private void Disable()

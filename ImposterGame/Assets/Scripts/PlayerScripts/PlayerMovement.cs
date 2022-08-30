@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using CustomUtilities;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float speed = 3f;
+    [SerializeField] public float speed = 3f;
     [SerializeField] private float jumpSpeed = 4f;
     private Vector2 moveInput;
     public Rigidbody2D body;
@@ -73,13 +74,19 @@ public class PlayerMovement : MonoBehaviour
             playerAnimator.SetBool("isRunning", false);
     }
 
-    private void FlipPlayer()
+    public void FlipPlayer(bool faceCursor = false)
     {
         bool playerHasHorizontalSpeed = Mathf.Abs(body.velocity.x) > Mathf.Epsilon;
 
-        if (playerHasHorizontalSpeed)
+        if (playerHasHorizontalSpeed && !faceCursor)
         {
             float rot = body.velocity.x > Mathf.Epsilon ? 0 : 180;
+            transform.rotation = new Quaternion(0, rot, 0, 1);
+        }
+
+        if (faceCursor)
+        {
+            float rot = Utils.GetMouseToWorldPosition().x > transform.position.x ? 0 : 180;
             transform.rotation = new Quaternion(0, rot, 0, 1);
         }
     }
