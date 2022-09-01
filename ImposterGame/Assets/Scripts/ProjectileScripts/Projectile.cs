@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using CustomUtilities;
-using System.Net;
 
 public class Projectile : MonoBehaviour
 {
@@ -10,13 +9,24 @@ public class Projectile : MonoBehaviour
     //[SerializeField] private float verticalSpeed = 2f;
     private float _direction;
     private bool hit;
-    private float lifetime = 1.5f;
+    private float lifetime = 5f;
 
     private BoxCollider2D boxCollider;
     public Rigidbody2D rb;
 
     public bool held = true;
     public bool thrown = false;
+
+    public DamageSystem damage;
+
+    public enum ProjectileOrigin
+    {
+        Player,
+        Enemy,
+        Friendly
+    }
+
+    public ProjectileOrigin origin;
 
     private void Awake()
     {
@@ -64,5 +74,18 @@ public class Projectile : MonoBehaviour
     {
         float sign = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().transform.rotation.y;
         _direction = sign > Mathf.Epsilon ? -1 : 1;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.tag == origin.ToString()) return;
+        Debug.Log($"{collision.collider.name}");
+
+        collision.collider.TryGetComponent(out IDamageable damageable);
+        if(damageable != null)
+        {
+            damageable.Damage(damage.damage);
+            Disable();
+        }
     }
 }
