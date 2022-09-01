@@ -270,8 +270,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AssetsPPU: 32
-  m_RefResolutionX: 480
-  m_RefResolutionY: 360
+  m_RefResolutionX: 360
+  m_RefResolutionY: 240
   m_UpscaleRT: 1
   m_PixelSnapping: 1
   m_CropFrameX: 0
@@ -290,6 +290,7 @@ GameObject:
   - component: {fileID: 561208102}
   - component: {fileID: 561208100}
   - component: {fileID: 561208105}
+  - component: {fileID: 561208106}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -383,6 +384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHealth: {fileID: 11400000, guid: 3a4b48e2dfcb4bc48b22de3839cdb819, type: 2}
+  enemyAnimator: {fileID: 0}
 --- !u!4 &561208104
 Transform:
   m_ObjectHideFlags: 0
@@ -435,6 +437,26 @@ PolygonCollider2D:
       - {x: 0.30247593, y: 0.19829178}
       - {x: 0.1701827, y: 0.4836707}
       - {x: 0.048742294, y: 0.6015756}
+--- !u!95 &561208106
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561208099}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 30b73dff0e74ca343bed509eed33f478, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &617260830
 GameObject:
   m_ObjectHideFlags: 0
@@ -3321,12 +3343,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6569251145373610105, guid: 71ff483cf5dc9ce4f865593fde9006ab, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6569251145373610105, guid: 71ff483cf5dc9ce4f865593fde9006ab, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6569251145373610105, guid: 71ff483cf5dc9ce4f865593fde9006ab, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -262.746
+      value: 476.764
       objectReference: {fileID: 0}
     - target: {fileID: 6569251147051744011, guid: 71ff483cf5dc9ce4f865593fde9006ab, type: 3}
       propertyPath: m_Name
