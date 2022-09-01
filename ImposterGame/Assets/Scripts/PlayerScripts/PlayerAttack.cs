@@ -18,12 +18,16 @@ public class PlayerAttack : MonoBehaviour
 
     private Projectile currentProjectile;
 
+    private MeleeWeapon meleeWeapon;
+
     private void Awake()
     {
         player = GetComponent<PlayerMovement>();
         tempSpeed = player.speed;
 
         playerAnimator = GetComponent<Animator>();
+
+        meleeWeapon = GetComponentInChildren<MeleeWeapon>(true);
 
         inputActions = new PlayerInputActions();
         inputActions.Enable();
@@ -79,6 +83,16 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
+    private void GetMeleeWeapon()
+    {
+        meleeWeapon.gameObject.SetActive(true);
+    }
+
+    private void HideMeleeWeapon()
+    {
+        meleeWeapon.gameObject.SetActive(false);
+    }
+
     private void SetSpeed(float value)
     {
         player.speed = value;
@@ -99,6 +113,7 @@ public class PlayerAttack : MonoBehaviour
         var getProjectile = ObjectPoolManager.instance.SpawnFromObjectPool("CoffeeMug", firePoint.position, Quaternion.identity);
         currentProjectile = getProjectile.GetComponent<Projectile>();
         currentProjectile.held = true;
+        currentProjectile.origin = Projectile.ProjectileOrigin.Player;
     }
 
     private void HoldProjectile()

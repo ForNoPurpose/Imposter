@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D body;
     private BoxCollider2D playerCollider;
     private Animator playerAnimator;
-    private PlayerInput playerInput;
+    //private PlayerInput playerInput;
     public PlayerInputActions inputActions;
 
     public WorldLayer.LayerNumber worldPosition = WorldLayer.LayerNumber.Middleground;
@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<BoxCollider2D>();
         playerAnimator = GetComponent<Animator>();
-        playerInput = GetComponent<PlayerInput>();
+        //playerInput = GetComponent<PlayerInput>();
 
         inputActions = new PlayerInputActions();
         inputActions.Player.Enable();
