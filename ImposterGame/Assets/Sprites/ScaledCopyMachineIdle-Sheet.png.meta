@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ceff246a3f7a4ea4db20702bfd70a592
+guid: 18790934bf44f554fba64e0e63bf7cde
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -104,7 +104,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Copy Machine Idle-Sheet_0
+      name: ScaledCopyMachineIdle-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -112,20 +112,20 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 9
-      pivot: {x: 0.75, y: 0.765625}
+      pivot: {x: 0.75, y: 0.75}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f468a7f689612254b836011e5098c861
-      internalID: -108390591
+      spriteID: b85b0a2c2aa76744ea8fefebcaa52989
+      internalID: -1501597673
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Copy Machine Idle-Sheet_1
+      name: ScaledCopyMachineIdle-Sheet_1
       rect:
         serializedVersion: 2
         x: 64
@@ -133,20 +133,20 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 9
-      pivot: {x: 0.75, y: 0.765625}
+      pivot: {x: 0.75, y: 0.75}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3d97da6918bdc7d4594fbd50032fd0c5
-      internalID: -225700833
+      spriteID: 66ece10cf8b45c641bdb1afb0608282b
+      internalID: 1673881612
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Copy Machine Idle-Sheet_2
+      name: ScaledCopyMachineIdle-Sheet_2
       rect:
         serializedVersion: 2
         x: 128
@@ -154,20 +154,20 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 9
-      pivot: {x: 0.75, y: 0.765625}
+      pivot: {x: 0.75, y: 0.75}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 59216275b3b5bdf4a8b600148a578d3f
-      internalID: 47085856
+      spriteID: 6d7b4b2da01cad54398efc82435c5711
+      internalID: -1108188961
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Copy Machine Idle-Sheet_3
+      name: ScaledCopyMachineIdle-Sheet_3
       rect:
         serializedVersion: 2
         x: 192
@@ -175,14 +175,14 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 9
-      pivot: {x: 0.75, y: 0.765625}
+      pivot: {x: 0.75, y: 0.75}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eea17eb0741fd14469a663cb77ccd62f
-      internalID: -1807231368
+      spriteID: 9591adae8ff16154bbcea4fbac50edac
+      internalID: 1812547504
       vertices: []
       indices: 
       edges: []
@@ -198,10 +198,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Copy Machine Idle-Sheet_2: 47085856
-      Copy Machine Idle-Sheet_1: -225700833
-      Copy Machine Idle-Sheet_3: -1807231368
-      Copy Machine Idle-Sheet_0: -108390591
+      ScaledCopyMachineIdle-Sheet_3: 1812547504
+      ScaledCopyMachineIdle-Sheet_1: 1673881612
+      ScaledCopyMachineIdle-Sheet_0: -1501597673
+      ScaledCopyMachineIdle-Sheet_2: -1108188961
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
