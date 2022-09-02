@@ -22,3 +22,13 @@ Game State :
 Main menu Navigation (mouse and arrow keys)
 </h2>
 <img src="https://github.com/ForNoPurpose/Imposter/blob/main/ImposterGame/Game%20Functionality%20Clips/MenuFunctionality.gif"/>
+
+<h5>
+Basic player movement and animations
+</h2>
+<img src="https://github.com/ForNoPurpose/Imposter/blob/main/ImposterGame/Game%20Functionality%20Clips/PlayerMovementAndAnimations.gif"/>
+
+<h5>
+Basic player attack styles and animations
+</h2>
+<img src="https://github.com/ForNoPurpose/Imposter/blob/main/ImposterGame/Game%20Functionality%20Clips/PlayerAttackStylesAndAnimations.gif"/>
