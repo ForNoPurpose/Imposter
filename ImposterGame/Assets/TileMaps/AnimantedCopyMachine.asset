@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: AnimantedCopyMachine
   m_EditorClassIdentifier: 
   m_AnimatedSprites:
-  - {fileID: -108390591, guid: ceff246a3f7a4ea4db20702bfd70a592, type: 3}
-  - {fileID: -225700833, guid: ceff246a3f7a4ea4db20702bfd70a592, type: 3}
-  - {fileID: 47085856, guid: ceff246a3f7a4ea4db20702bfd70a592, type: 3}
-  - {fileID: -1807231368, guid: ceff246a3f7a4ea4db20702bfd70a592, type: 3}
+  - {fileID: -1501597673, guid: 18790934bf44f554fba64e0e63bf7cde, type: 3}
+  - {fileID: 1673881612, guid: 18790934bf44f554fba64e0e63bf7cde, type: 3}
+  - {fileID: -1108188961, guid: 18790934bf44f554fba64e0e63bf7cde, type: 3}
+  - {fileID: 1812547504, guid: 18790934bf44f554fba64e0e63bf7cde, type: 3}
   m_MinSpeed: 4
   m_MaxSpeed: 4
   m_AnimationStartTime: 0
