@@ -10,6 +10,7 @@ About :
 - Created by [Orion Hogan](https://www.linkedin.com/in/orion-hogan/) and [Chris Britton](https://www.linkedin.com/in/christopher-britton/)
 - All scripting, art, animations, and game mechanics are built from scratch
 - Currently being designed with flexibility in mind (applicable with multiple input device options)
+- Since Imposter is currently a work in progress we will be updating current game functionality here
 
 ---
 
@@ -17,4 +18,7 @@ About :
 Game State : 
 </h3>
 
-- Since Imposter is currently a work in progress we will be updating current game functionality here
+<h5>
+Main menu Navigation (mouse and arrow keys)
+</h2>
+<img src="https://github.com/ForNoPurpose/Imposter/blob/main/ImposterGame/Game%20Functionality%20Clips/MenuFunctionality.gif"/>
