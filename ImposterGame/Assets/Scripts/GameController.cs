@@ -25,7 +25,7 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
-        DisplayTilemaps();
+        //DisplayTilemaps();
     }
 
     private void DisplayTilemaps()
