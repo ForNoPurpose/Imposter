@@ -85,9 +85,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 11400000, guid: 92c0534a455f76441a778fe92a9a6d79, type: 2}
-  playerBuffer: 0
+  playerBufferMaxSize: 0
+  playerBufferCurrentSize: 0
   playerLevel: 0
-  playerExperience: 0
 --- !u!114 &6569251147051744017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,9 +130,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aff0115339e87440ae74c601f5d65c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactionPoint: {fileID: 2753898247254611466}
-  _interactionPointRadius: 0.75
-  _interactableMask:
+  _interactPoint: {fileID: 2753898247254611466}
+  _interactRadius: 0.6
+  _layerMask:
     serializedVersion: 2
     m_Bits: 64
   _numFound: 0

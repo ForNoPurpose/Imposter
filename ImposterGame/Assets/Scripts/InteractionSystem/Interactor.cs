@@ -5,40 +5,37 @@ using UnityEngine.InputSystem;
 
 public class Interactor : MonoBehaviour
 {
-    [SerializeField] private Transform _interactionPoint;
-    [SerializeField] private float _interactionPointRadius;
-    [SerializeField] private LayerMask _interactableMask;
+    [SerializeField] private Transform _interactPoint;
+    [SerializeField] private float _interactRadius;
+    [SerializeField] private LayerMask _layerMask;
 
-    private readonly Collider2D[] _colliders = new Collider2D[3];
     [SerializeField] private int _numFound;
+    private Collider2D[] _colliders = new Collider2D[3];
 
-    private PlayerController _playerController;
+    private PlayerInputActions _actions;
 
     private void Awake()
     {
-        _playerController = GetComponent<PlayerController>();
+        _actions = new PlayerInputActions();
+        _actions.Enable();
     }
-
+    private void OnDisable()
+    {
+        _actions.Disable();
+    }
     private void Update()
     {
-        _numFound = Physics2D.OverlapCircleNonAlloc(_interactionPoint.position, _interactionPointRadius, _colliders, _interactableMask);
-
+        _numFound = Physics2D.OverlapCircleNonAlloc(_interactPoint.position, _interactRadius, _colliders, _layerMask);
         if(_numFound > 0)
         {
             _colliders[0].TryGetComponent<IInteractable>(out var interactable);
-
-            if(interactable != null)
+            if(interactable != null && _actions.Player.Interact.WasPerformedThisFrame())
             {
-                interactable.PromptToggle = true;
-                if(Keyboard.current.rKey.wasPressedThisFrame && interactable.CanCopy)
-                {
-                    var addToPlayerProjectileList = Instantiate(Resources.Load($"Assets/Prefabs/{interactable.GetTag}.prefab")) as Projectile;
-                    addToPlayerProjectileList.gameObject.SetActive(false);
-                    if(!(_playerController.playerBufferCurrentSize + addToPlayerProjectileList.BufferRequired > _playerController.playerBufferMaxSize))
-                    {
-                        _playerController.playerBuffer.Add(addToPlayerProjectileList);
-                    }
-                }
+                interactable.Interact();
+            }
+            if(interactable != null && _actions.Player.CopyMechanic.WasPerformedThisFrame())
+            {
+                interactable.Pickup();
             }
         }
     }
@@ -46,6 +43,6 @@ public class Interactor : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(_interactionPoint.position, _interactionPointRadius);
+        Gizmos.DrawWireSphere(_interactPoint.position, _interactRadius);
     }
 }

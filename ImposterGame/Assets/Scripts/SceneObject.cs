@@ -8,89 +8,31 @@ using TMPro;
 
 public class SceneObject : MonoBehaviour, IInteractable
 {
-    public bool _canCopy = false;
-    public bool CanCopy { get => _canCopy; }
+    [SerializeField] private ItemDataSO _itemData;
 
-    [SerializeField] private string _name = "";
-    [SerializeField] private string _prompt;
-    private SpriteRenderer _spriteRenderer;
+    public static event Action OnInteract;
+    public static event Action<ItemDataSO> OnPickup;
 
-    public string InteractionPrompt => _prompt;
-
-    private bool _displayPrompt;
-    public bool PromptToggle { get => _displayPrompt; set => _displayPrompt = value; }
-
-    Canvas _textBox;
-
-    public int bufferRequired;
-
-    [SerializeField] private string _tag;
-    public string GetTag => _tag;
-
-    void OnValidate()
+    public void Interact()
     {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-        UpdateName();
+        Debug.Log("You Interacted!");
+        OnInteract?.Invoke();
     }
 
-    private void Awake()
+    public void Pickup()
     {
-        if (_canCopy) 
-        { 
-            _textBox = GetComponentInChildren<Canvas>(true);
+        Debug.Log("You Copied this!");
+        OnPickup?.Invoke(_itemData);
+    }
+
+    private void Start()
+    {
+        var sprite = GetComponent<SpriteRenderer>();
+        sprite.sprite = _itemData.Icon;
+        if (_itemData.CanCopy)
+        {
             gameObject.layer = LayerMask.NameToLayer("Interactables");
-            AddSpriteCollider();
+            gameObject.AddComponent<PolygonCollider2D>();
         }
-    }
-
-    private void Update()
-    {
-        DisplayPrompt();
-    }
-
-    private void AddSpriteCollider()
-    {
-        var polyCollider = gameObject.AddComponent<PolygonCollider2D>();
-        polyCollider.isTrigger = true;
-        var sprite = _spriteRenderer.sprite;
-
-        if (polyCollider == null || sprite == null) return;
-
-        List<Vector2> path = new();
-        for (int i = 0; i < polyCollider.pathCount; i++)
-        {
-            path.Clear();
-            sprite.GetPhysicsShape(i, path);
-            polyCollider.SetPath(i, path.ToArray());
-        }
-    }
-
-    private void UpdateName()
-    {
-        if (_name == null || _name == String.Empty)
-        {
-            string tempName = _spriteRenderer.sprite.name;
-            gameObject.name = $"{tempName}";
-        }
-    }
-
-    public bool Interact(Interactor interactor)
-    {
-        Debug.Log("You interacted.");
-        return true;
-    }
-
-    public void DisplayPrompt()
-    {
-        if (_textBox == null) return;
-        if (_displayPrompt)
-        {
-            _textBox.gameObject.SetActive(true);
-        }
-        else
-        {
-            _textBox.gameObject.SetActive(false);
-        }
-        _displayPrompt = false;
     }
 }

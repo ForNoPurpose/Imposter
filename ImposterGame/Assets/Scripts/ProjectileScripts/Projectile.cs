@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using CustomUtilities;
 
-public class Projectile : MonoBehaviour, IWeapon
+public class Projectile : MonoBehaviour
 {
     //[SerializeField] private float speed = 5f;
     //[SerializeField] private float verticalSpeed = 2f;
@@ -18,9 +18,6 @@ public class Projectile : MonoBehaviour, IWeapon
     public bool thrown = false;
 
     public DamageSystem damage;
-
-    [SerializeField] private uint _bufferRequired;
-    public uint BufferRequired => _bufferRequired;
 
     public enum ProjectileOrigin
     {
