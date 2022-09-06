@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using CustomUtilities;
+using System;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -17,8 +18,11 @@ public class PlayerAttack : MonoBehaviour
     private float tempSpeed;
 
     private Projectile currentProjectile;
+    private ItemDataSO _projectileData;
 
     private MeleeWeapon meleeWeapon;
+
+    public static event Action<ItemDataSO> OnThrow;
 
     private void Awake()
     {
@@ -38,12 +42,13 @@ public class PlayerAttack : MonoBehaviour
         };
         inputActions.Player.Fire.performed += ctx => {
             if (aiming) playerAnimator.SetTrigger("Throw");
+            OnThrow?.Invoke(_projectileData);
         };
         inputActions.Player.Aim.canceled += ctx => {
             aiming = false;
             playerAnimator.SetBool("isAiming", false);
             ResetSpeed();
-            currentProjectile.held = false;
+            if(currentProjectile != null) currentProjectile.held = false;
         };
 
         inputActions.Player.Melee.performed += ctx => Melee();
@@ -56,7 +61,7 @@ public class PlayerAttack : MonoBehaviour
         if (aiming)
         {
             player.FlipPlayer(true);
-            if (!currentProjectile.thrown) HoldProjectile();
+            if (currentProjectile != null && !currentProjectile.thrown) HoldProjectile();
             Utils.DrawTrajectory(firePoint);
         }
     }
@@ -65,10 +70,13 @@ public class PlayerAttack : MonoBehaviour
     {
         if (cooldownTimer < attackCooldown || !aiming) return;
         cooldownTimer = 0;
-        //ObjectPoolManager.instance.SpawnFromObjectPool("CoffeeMug", firePoint.position, Quaternion.identity);
-        currentProjectile.held = false;
-        currentProjectile.thrown = true;
-        currentProjectile.MugFlightPath();
+
+        if (currentProjectile != null)
+        {
+            currentProjectile.held = false;
+            currentProjectile.thrown = true;
+            currentProjectile.MugFlightPath(); 
+        }
         if (aiming)
         {
             GetProjectile();
@@ -110,7 +118,8 @@ public class PlayerAttack : MonoBehaviour
 
     private void GetProjectile()
     {
-        var getProjectile = ObjectPoolManager.instance.SpawnFromObjectPool("CoffeeMug", firePoint.position, Quaternion.identity);
+        if ((_projectileData = PlayerController.instance.CurrentProjectile()) == null) return;
+        var getProjectile = Instantiate(_projectileData.GameModel, firePoint.position, Quaternion.identity);
         currentProjectile = getProjectile.GetComponent<Projectile>();
         currentProjectile.held = true;
         currentProjectile.origin = Projectile.ProjectileOrigin.Player;

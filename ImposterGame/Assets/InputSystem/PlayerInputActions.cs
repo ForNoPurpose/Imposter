@@ -89,6 +89,24 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""d10ced2e-bf93-4c4f-8e4d-dd1c6c14ea64"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CopyMechanic"",
+                    ""type"": ""Button"",
+                    ""id"": ""dc96a343-b992-4ca3-9d4d-8809b51b4257"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -386,6 +404,28 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""XR"",
                     ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fc08fcbf-dadf-449a-87fc-d739a60266b6"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""533622dc-80ee-43ce-b6d1-f844d3726916"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""CopyMechanic"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -980,6 +1020,8 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
         m_Player_Melee = m_Player.FindAction("Melee", throwIfNotFound: true);
+        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+        m_Player_CopyMechanic = m_Player.FindAction("CopyMechanic", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1058,6 +1100,8 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Aim;
     private readonly InputAction m_Player_Fire;
     private readonly InputAction m_Player_Melee;
+    private readonly InputAction m_Player_Interact;
+    private readonly InputAction m_Player_CopyMechanic;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -1069,6 +1113,8 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @Aim => m_Wrapper.m_Player_Aim;
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
         public InputAction @Melee => m_Wrapper.m_Player_Melee;
+        public InputAction @Interact => m_Wrapper.m_Player_Interact;
+        public InputAction @CopyMechanic => m_Wrapper.m_Player_CopyMechanic;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1099,6 +1145,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Melee.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMelee;
                 @Melee.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMelee;
                 @Melee.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMelee;
+                @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @CopyMechanic.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCopyMechanic;
+                @CopyMechanic.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCopyMechanic;
+                @CopyMechanic.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCopyMechanic;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1124,6 +1176,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Melee.started += instance.OnMelee;
                 @Melee.performed += instance.OnMelee;
                 @Melee.canceled += instance.OnMelee;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
+                @CopyMechanic.started += instance.OnCopyMechanic;
+                @CopyMechanic.performed += instance.OnCopyMechanic;
+                @CopyMechanic.canceled += instance.OnCopyMechanic;
             }
         }
     }
@@ -1287,6 +1345,8 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnAim(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
         void OnMelee(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
+        void OnCopyMechanic(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
