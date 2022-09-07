@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class OpenDoor : MonoBehaviour
 {
@@ -10,20 +11,21 @@ public class OpenDoor : MonoBehaviour
     public float doorHeight;
     private PlayerInputActions inputActions;
     SwitchScenes sceneTransition;
+    public LayerMask whatIsPlayer;
     private void Start()
     {
         sceneTransition = FindObjectOfType<SwitchScenes>();
     }
     private void Update()
     {
-        playerDetected = Physics2D.OverlapBox(doorPosition.position, new Vector2(doorWidth, doorHeight), 0);
+        playerDetected = Physics2D.OverlapBox(doorPosition.position, new Vector2(doorWidth, doorHeight), 0, whatIsPlayer);
 
         if (playerDetected)
         {
             inputActions = new PlayerInputActions();
             inputActions.Enable();
 
-            if (inputActions.Player.EnterExitDoor.triggered)
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 sceneTransition.SwitchScene();
             }
