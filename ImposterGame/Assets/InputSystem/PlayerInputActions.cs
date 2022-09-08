@@ -311,7 +311,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""up"",
                     ""id"": ""5fe66d46-0510-4cf1-b102-05dbd5a6564b"",
-                    ""path"": ""<Keyboard>/w"",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -320,9 +320,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""down"",
-                    ""id"": ""e90d14df-dcc2-4877-bde5-152ac2f44483"",
-                    ""path"": ""<Keyboard>/s"",
+                    ""name"": ""up"",
+                    ""id"": ""266802df-3aa5-4e62-8a1d-a9074cf6287e"",
+                    ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
