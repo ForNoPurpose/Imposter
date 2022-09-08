@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using CustomUtilities;
 using System;
+using Unity.VisualScripting;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -48,7 +49,11 @@ public class PlayerAttack : MonoBehaviour
             aiming = false;
             playerAnimator.SetBool("isAiming", false);
             ResetSpeed();
-            if(currentProjectile != null) currentProjectile.held = false;
+            if (currentProjectile != null) 
+            { 
+                currentProjectile.held = false;
+                //Destroy(currentProjectile.gameObject);
+            }
         };
 
         inputActions.Player.Melee.performed += ctx => Melee();
@@ -75,7 +80,8 @@ public class PlayerAttack : MonoBehaviour
         {
             currentProjectile.held = false;
             currentProjectile.thrown = true;
-            currentProjectile.MugFlightPath(); 
+            currentProjectile.MugFlightPath();
+            currentProjectile = null;
         }
         if (aiming)
         {
@@ -119,7 +125,7 @@ public class PlayerAttack : MonoBehaviour
     private void GetProjectile()
     {
         if ((_projectileData = PlayerController.instance.CurrentProjectile()) == null) return;
-        var getProjectile = Instantiate(_projectileData.GameModel, firePoint.position, Quaternion.identity);
+        var getProjectile = ObjectPoolManager.instance.SpawnFromObjectPool(_projectileData.ID, firePoint.position, Quaternion.identity);
         currentProjectile = getProjectile.GetComponent<Projectile>();
         currentProjectile.held = true;
         currentProjectile.origin = Projectile.ProjectileOrigin.Player;

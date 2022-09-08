@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1407855487954287404}
   - component: {fileID: -2719184864335344864}
-  - component: {fileID: 2493840723068334993}
+  - component: {fileID: -4128690969047113856}
   - component: {fileID: 3150763009519450575}
   - component: {fileID: 8125164705846901499}
   m_Layer: 0
@@ -51,10 +51,9 @@ MonoBehaviour:
   held: 1
   thrown: 0
   damage: {fileID: 11400000, guid: cc3a55d4de8386f4b803fa0e56b73eeb, type: 2}
-  _bufferRequired: 2
   origin: 0
---- !u!61 &2493840723068334993
-BoxCollider2D:
+--- !u!60 &-4128690969047113856
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -76,9 +75,24 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.21059528, y: 0.20183581}
-  m_EdgeRadius: 0.12
+  m_Points:
+    m_Paths:
+    - - {x: 0.1875, y: -0.21875}
+      - {x: -0.09375, y: -0.21875}
+      - {x: -0.09375, y: -0.1875}
+      - {x: -0.125, y: -0.1875}
+      - {x: -0.125, y: -0.125}
+      - {x: -0.21875, y: -0.125}
+      - {x: -0.21875, y: 0.125}
+      - {x: -0.125, y: 0.125}
+      - {x: -0.125, y: 0.1875}
+      - {x: -0.09375, y: 0.1875}
+      - {x: -0.09375, y: 0.21875}
+      - {x: 0.1875, y: 0.21875}
+      - {x: 0.1875, y: 0.1875}
+      - {x: 0.21875, y: 0.1875}
+      - {x: 0.21875, y: -0.1875}
+      - {x: 0.1875, y: -0.1875}
 --- !u!50 &3150763009519450575
 Rigidbody2D:
   serializedVersion: 4
