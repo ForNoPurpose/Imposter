@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class OpenDoor : MonoBehaviour
 {
@@ -12,15 +13,27 @@ public class OpenDoor : MonoBehaviour
     private PlayerInputActions inputActions;
     SwitchScenes sceneTransition;
     public LayerMask whatIsPlayer;
+    private bool doorIsLocked = true;
+
+    [SerializeField] private GameObject lockSprite;
     private void Start()
     {
         sceneTransition = FindObjectOfType<SwitchScenes>();
+        lockSprite.SetActive(false);
     }
     private void Update()
     {
         playerDetected = Physics2D.OverlapBox(doorPosition.position, new Vector2(doorWidth, doorHeight), 0, whatIsPlayer);
 
-        if (playerDetected)
+        if (playerDetected && doorIsLocked)
+        {
+            lockSprite.SetActive(true);
+        }
+        else
+        {
+            lockSprite.SetActive(false);
+        }
+        if (playerDetected && !doorIsLocked)
         {
             inputActions = new PlayerInputActions();
             inputActions.Enable();
@@ -30,6 +43,7 @@ public class OpenDoor : MonoBehaviour
                 sceneTransition.SwitchScene();
             }
         }
+
     }
     private void OnDrawGizmosSelected()
     {
