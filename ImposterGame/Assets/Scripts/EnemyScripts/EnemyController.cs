@@ -15,7 +15,7 @@ public class EnemyController : Controller, IDamageable
 
     [SerializeField] private float _detectionRadius = 1f;
     [SerializeField] private LayerMask _allowedLayer;
-    private Collider2D[] _colliders;
+    private Collider2D[] _colliders = new Collider2D[3];
     private int _numFound;
 
     private void Start()
