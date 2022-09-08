@@ -29,13 +29,14 @@ public class Interactor : MonoBehaviour
         if(_numFound > 0)
         {
             _colliders[0].TryGetComponent<IInteractable>(out var interactable);
+            _colliders[0].TryGetComponent<ICopiable>(out var copiable);
             if(interactable != null && _actions.Player.Interact.WasPerformedThisFrame())
             {
                 interactable.Interact();
             }
-            if(interactable != null && _actions.Player.CopyMechanic.WasPerformedThisFrame())
+            if(copiable != null && _actions.Player.CopyMechanic.WasPerformedThisFrame())
             {
-                interactable.Pickup();
+                copiable.CopyMechanic();
             }
         }
     }

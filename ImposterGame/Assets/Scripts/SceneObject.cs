@@ -6,7 +6,7 @@ using System.Linq;
 using System;
 using TMPro;
 
-public class SceneObject : MonoBehaviour, IInteractable
+public class SceneObject : MonoBehaviour, IInteractable, ICopiable
 {
     [SerializeField] private ItemDataSO _itemData;
 
@@ -19,7 +19,7 @@ public class SceneObject : MonoBehaviour, IInteractable
         OnInteract?.Invoke();
     }
 
-    public void Pickup()
+    public void CopyMechanic()
     {
         Debug.Log("You Copied this!");
         OnPickup?.Invoke(_itemData);
