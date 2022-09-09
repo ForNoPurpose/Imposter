@@ -13,13 +13,15 @@ public class OpenDoor : MonoBehaviour
     private PlayerInputActions inputActions;
     SwitchScenes sceneTransition;
     public LayerMask whatIsPlayer;
-    private bool doorIsLocked = true;
+    private bool doorIsLocked = false;
 
     [SerializeField] private GameObject lockSprite;
+    [SerializeField] private GameObject unlockedSprite;
     private void Start()
     {
         sceneTransition = FindObjectOfType<SwitchScenes>();
         lockSprite.SetActive(false);
+        unlockedSprite.SetActive(false);
     }
     private void Update()
     {
@@ -35,6 +37,7 @@ public class OpenDoor : MonoBehaviour
         }
         if (playerDetected && !doorIsLocked)
         {
+            unlockedSprite.SetActive(true);
             inputActions = new PlayerInputActions();
             inputActions.Enable();
 
@@ -42,6 +45,10 @@ public class OpenDoor : MonoBehaviour
             {
                 sceneTransition.SwitchScene();
             }
+        }
+        else
+        {
+            unlockedSprite.SetActive(false);
         }
 
     }
