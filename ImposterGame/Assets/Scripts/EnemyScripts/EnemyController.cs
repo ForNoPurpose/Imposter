@@ -16,7 +16,7 @@ public class EnemyController : Controller, IDamageable
     [SerializeField] private float _detectionRadius = 1f;
     [SerializeField] private LayerMask _allowedLayer;
     private Collider2D[] _colliders = new Collider2D[3];
-    private int _numFound;
+    private int _numFound = 0;
 
     private void Start()
     {
@@ -27,13 +27,14 @@ public class EnemyController : Controller, IDamageable
 
     private void FixedUpdate()
     {
-        _numFound = Physics2D.OverlapCircleNonAlloc(transform.position, _detectionRadius, _colliders, _allowedLayer);
         if (_numFound == 0)
         {
+            _numFound = Physics2D.OverlapCircleNonAlloc(transform.position, _detectionRadius, _colliders, _allowedLayer);
             _possibleStates[0].State(this); 
         }
         else
         {
+            _numFound = 1;
             _possibleStates[1].State(this);
         }
 
@@ -47,5 +48,11 @@ public class EnemyController : Controller, IDamageable
         {
             gameObject.SetActive(false);
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, _detectionRadius);
     }
 }
