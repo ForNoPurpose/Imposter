@@ -17,7 +17,6 @@ public class OpenDoor : MonoBehaviour
     public bool playerHasKey = false;
 
     [SerializeField] private string _sceneName;
-
     [SerializeField] private GameObject _lockSprite;
     [SerializeField] private GameObject _unlockedSprite;
     private void Start()
