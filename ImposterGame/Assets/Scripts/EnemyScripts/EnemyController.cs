@@ -11,6 +11,8 @@ public class EnemyController : Controller, IDamageable
 
     public float _enemySpeed = 1.5f;
 
+    private float _damage = 10f;
+
     public AIStateSO[] _possibleStates;
 
     [SerializeField] private float _detectionRadius = 1f;
@@ -42,7 +44,7 @@ public class EnemyController : Controller, IDamageable
 
     public void Damage(float amount)
     {
-        transform.position = transform.position + new Vector3(-0.5f, 1f, 0);
+        //transform.position = transform.position + new Vector3(-0.5f, 1f, 0);
         _enemyHealth.health -= amount / _enemyHealth.resistance;
         if (_enemyHealth.health <= 0)
         {
@@ -54,5 +56,16 @@ public class EnemyController : Controller, IDamageable
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, _detectionRadius);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.tag != "Player") return;
+
+        collision.collider.TryGetComponent(out IDamageable damageable);
+        if (damageable != null)
+        {
+            damageable.Damage(_damage);
+        }
     }
 }
