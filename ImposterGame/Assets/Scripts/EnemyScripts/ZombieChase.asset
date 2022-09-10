@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c35a73a4b6a8604e9e44686aa5650cf, type: 3}
   m_Name: ZombieChase
   m_EditorClassIdentifier: 
+  _target: {fileID: 0}
+  _targetTag: Player
