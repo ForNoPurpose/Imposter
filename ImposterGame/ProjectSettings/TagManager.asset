@@ -8,8 +8,7 @@ TagManager:
   - UI
   - MainMenu
   - Enemy
-  - HealthBar
-  - BufferBar
+  - LevelOneDoor
   layers:
   - Default
   - TransparentFX
@@ -19,7 +18,7 @@ TagManager:
   - UI
   - Interactables
   - Enemies
-  - Projectiles
+  - 
   - BackgroundWall
   - 
   - Ground

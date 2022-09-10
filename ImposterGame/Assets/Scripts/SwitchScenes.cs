@@ -8,8 +8,8 @@ public class SwitchScenes : MonoBehaviour
     {
         
     }
-    public void SwitchScene()
+    public void SwitchScene(string sceneName)
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(sceneName);
     }
 }
