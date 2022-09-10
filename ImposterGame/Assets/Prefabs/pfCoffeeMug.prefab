@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -4128690969047113856}
   - component: {fileID: 3150763009519450575}
   - component: {fileID: 8125164705846901499}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: pfCoffeeMug
   m_TagString: CoffeeMug
   m_Icon: {fileID: 0}

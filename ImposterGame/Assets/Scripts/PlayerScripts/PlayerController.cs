@@ -5,7 +5,7 @@ using UnityEngine.Pool;
 using System;
 using System.Linq;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IDamageable
 {
     public static PlayerController instance;
     
@@ -16,6 +16,9 @@ public class PlayerController : MonoBehaviour
     //[SerializeField] private uint playerExperience = 0;
 
     [SerializeField] private List<ItemDataSO> _playerBuffer = new();
+
+    private float _damageTimer = 1f;
+    private bool _canTakeDamage = false;
 
     private void Awake()
     {
@@ -31,6 +34,11 @@ public class PlayerController : MonoBehaviour
     {
         SceneObject.OnPickup -= AddToBuffer;
         PlayerAttack.OnThrow -= RemoveFromBuffer;
+    }
+
+    private void Update()
+    {
+        DamageTimer();
     }
 
     private void AddToBuffer(ItemDataSO itemData)
@@ -52,5 +60,28 @@ public class PlayerController : MonoBehaviour
     public ItemDataSO CurrentProjectile()
     {
         return _playerBuffer.FirstOrDefault(x => x.Type == ItemType.Projectile);
+    }
+
+    public void Damage(float amount)
+    {
+        if (!_canTakeDamage) return;
+        playerHealth.health -= amount / playerHealth.resistance;
+        if (playerHealth.health <= 0)
+        {
+            GameController.GameInstance.SetState(GameController.GameState.GameOver);
+        }
+    }
+
+    private void DamageTimer()
+    {
+        if (!_canTakeDamage && _damageTimer > 0)
+        {
+            _damageTimer -= Time.deltaTime;
+        }
+        else
+        {
+            _canTakeDamage = true;
+            _damageTimer = 1f;
+        }
     }
 }
