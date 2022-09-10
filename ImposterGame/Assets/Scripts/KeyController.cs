@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class KeyController : MonoBehaviour, IInteractable
 {
+    OpenDoor levelOneDoor;
     public void Interact()
     {
         gameObject.SetActive(false);
-        GetComponent<OpenDoor>().playerHasKey = true;
+        levelOneDoor.playerHasKey = true;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        GameObject.FindGameObjectWithTag("LevelOneDoor");
+        levelOneDoor = GameObject.FindGameObjectWithTag("LevelOneDoor").GetComponent<OpenDoor>();
     }
 
     // Update is called once per frame
