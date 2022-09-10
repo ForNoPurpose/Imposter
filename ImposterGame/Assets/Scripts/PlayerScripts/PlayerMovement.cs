@@ -12,26 +12,23 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D body;
     private BoxCollider2D playerCollider;
     private Animator playerAnimator;
-    //private PlayerInput playerInput;
-    public PlayerInputActions inputActions;
 
-    public WorldLayer.LayerNumber worldPosition = WorldLayer.LayerNumber.Middleground;
-    //public bool playerNearDoor = false;
+    public PlayerInputActions inputActions;
 
     private void Awake()
     {
         body = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<BoxCollider2D>();
         playerAnimator = GetComponent<Animator>();
-        //playerInput = GetComponent<PlayerInput>();
 
         inputActions = new PlayerInputActions();
         inputActions.Player.Enable();
         inputActions.Player.Jump.performed += Jump;
+    }
 
-        inputActions.Player.Move.performed += EnterExitDoor;
-
-
+    private void OnDestroy()
+    {
+        inputActions.Player.Jump.performed -= Jump;
     }
 
     private void Update()
@@ -88,26 +85,6 @@ public class PlayerMovement : MonoBehaviour
         {
             float rot = Utils.GetMouseToWorldPosition().x > transform.position.x ? 0 : 180;
             transform.rotation = new Quaternion(0, rot, 0, 1);
-        }
-    }
-
-    private void EnterExitDoor(InputAction.CallbackContext context)
-    {
-        if(context.ReadValue<Vector2>().y > 0.95f)
-        {
-            switch (GameController.gameInstance.CheckPlayerNearDoor(transform.position))
-            {
-                case GameController.Direction.ToSubLevel:
-                    if (worldPosition > WorldLayer.LayerNumber.Background)
-                        worldPosition -= 1;
-                    else worldPosition += 1;
-                    break;
-                case GameController.Direction.ToForeLevel:
-                    if (worldPosition < WorldLayer.LayerNumber.Foreground)
-                        worldPosition += 1;
-                    else worldPosition -= 1;
-                    break;
-            }
         }
     }
 }

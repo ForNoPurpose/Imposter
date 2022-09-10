@@ -14,6 +14,9 @@ public class Interactor : MonoBehaviour
 
     private PlayerInputActions _actions;
 
+    private IInteractable interactable;
+    private ICopiable copiable;
+
     private void Awake()
     {
         _actions = new PlayerInputActions();
@@ -28,10 +31,11 @@ public class Interactor : MonoBehaviour
         _numFound = Physics2D.OverlapCircleNonAlloc(_interactPoint.position, _interactRadius, _colliders, _layerMask);
         if(_numFound > 0)
         {
-            _colliders[0].TryGetComponent<IInteractable>(out var interactable);
-            _colliders[0].TryGetComponent<ICopiable>(out var copiable);
-            if(interactable != null && _actions.Player.Interact.WasPerformedThisFrame())
+            _colliders[0].TryGetComponent<IInteractable>(out interactable);
+            _colliders[0].TryGetComponent<ICopiable>(out copiable);
+            if(interactable != null && Keyboard.current.eKey.wasPressedThisFrame)
             {
+                Debug.Log("Interact?");
                 interactable.Interact();
             }
             if(copiable != null && _actions.Player.CopyMechanic.WasPerformedThisFrame())

@@ -32,7 +32,8 @@ public class SceneObject : MonoBehaviour, IInteractable, ICopiable
         if (_itemData.CanCopy)
         {
             gameObject.layer = LayerMask.NameToLayer("Interactables");
-            gameObject.AddComponent<PolygonCollider2D>();
+            var collider = gameObject.AddComponent<PolygonCollider2D>();
+            collider.isTrigger = true;
         }
     }
 }

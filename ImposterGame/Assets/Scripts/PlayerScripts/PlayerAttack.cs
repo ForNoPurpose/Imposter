@@ -42,8 +42,11 @@ public class PlayerAttack : MonoBehaviour
             GetProjectile();
         };
         inputActions.Player.Fire.performed += ctx => {
-            if (aiming) playerAnimator.SetTrigger("Throw");
-            OnThrow?.Invoke(_projectileData);
+            if (aiming)
+            {
+                playerAnimator.SetTrigger("Throw");
+                OnThrow?.Invoke(_projectileData);
+            }
         };
         inputActions.Player.Aim.canceled += ctx => {
             aiming = false;
