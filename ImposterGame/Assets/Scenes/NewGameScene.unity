@@ -2638,10 +2638,10 @@ PlayableDirector:
     value: {fileID: 29078369}
   - key: {fileID: 368242114840576978, guid: a52f9cf7374dbbd498d8c3c3702e7595, type: 2}
     value: {fileID: 425673327}
-  - key: {fileID: 80421813625962141, guid: a52f9cf7374dbbd498d8c3c3702e7595, type: 2}
-    value: {fileID: 1198065933}
   - key: {fileID: 8779394096912308360, guid: a52f9cf7374dbbd498d8c3c3702e7595, type: 2}
     value: {fileID: 1259203398}
+  - key: {fileID: -7203653033090405944, guid: a52f9cf7374dbbd498d8c3c3702e7595, type: 2}
+    value: {fileID: 1198065933}
   m_ExposedReferences:
     m_References: []
 --- !u!114 &778861301
@@ -2888,7 +2888,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1198065935}
-  - component: {fileID: 1198065934}
+  - component: {fileID: 1198065936}
   m_Layer: 0
   m_Name: SceneTransition
   m_TagString: Untagged
@@ -2896,18 +2896,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &1198065934
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1198065933}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9921bc18e4254904ebf7db0adc1c8592, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1198065935
 Transform:
   m_ObjectHideFlags: 0
@@ -2923,6 +2911,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1198065936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198065933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9921bc18e4254904ebf7db0adc1c8592, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1247313396
 GameObject:
   m_ObjectHideFlags: 0
