@@ -18,7 +18,15 @@ public class ObjectPoolManager : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this);
+        }
+        else
+        {
+            Destroy(this);
+        }
     }
 
     public void Start()
@@ -31,6 +39,7 @@ public class ObjectPoolManager : MonoBehaviour
             for (int i = 0; i < pool.poolSize; i++)
             {
                 GameObject pooledObject = Instantiate(pool.prefab);
+                pooledObject.transform.parent = transform;
                 pooledObject.SetActive(false);
                 objectPool.Enqueue(pooledObject);
             }

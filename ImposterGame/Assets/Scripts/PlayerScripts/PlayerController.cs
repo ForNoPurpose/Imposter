@@ -22,7 +22,15 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     private void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this);
+        }
+        else
+        {
+            Destroy(this);
+        }
         playerHealth.health = 100 + playerLevel * 10;
         playerBufferMaxSize = 10 + playerLevel;
 

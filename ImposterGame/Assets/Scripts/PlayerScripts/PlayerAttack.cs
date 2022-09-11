@@ -40,7 +40,7 @@ public class PlayerAttack : MonoBehaviour
         inputActions.Player.Fire.performed += OnFire;
         inputActions.Player.Aim.canceled += OnAimStop;
 
-        inputActions.Player.Melee.performed += ctx => Melee();
+        inputActions.Player.Melee.performed += Melee;
     }
 
     private void OnDestroy()
@@ -48,7 +48,7 @@ public class PlayerAttack : MonoBehaviour
         inputActions.Player.Aim.started -= OnAimStart;
         inputActions.Player.Aim.canceled -= OnAimStop;
         inputActions.Player.Fire.performed -= OnFire;
-        inputActions.Player.Melee.performed -= ctx => Melee();
+        inputActions.Player.Melee.performed -= Melee;
     }
 
     private void Update()
@@ -109,7 +109,7 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    private void Melee()
+    private void Melee(InputAction.CallbackContext context)
     {
         if (!aiming)
         {
