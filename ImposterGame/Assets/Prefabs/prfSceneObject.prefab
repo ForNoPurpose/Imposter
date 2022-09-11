@@ -235,8 +235,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 335507735b255f74bbc92b49d4483850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _canCopy: 0
-  _name: 
-  _prompt: 
-  bufferRequired: 0
-  _tag: 
+  _itemData: {fileID: 0}
