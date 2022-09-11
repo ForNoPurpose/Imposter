@@ -12,6 +12,18 @@ EditorBuildSettings:
     path: Assets/Scenes/NewGameScene.unity
     guid: 71bda47099ed40e4980fdd7abe4ada63
   - enabled: 1
+    path: Assets/Scenes/Level1_1.unity
+    guid: 9a19cce4917f8f14998e15f9fc7ad50c
+  - enabled: 1
+    path: Assets/Scenes/Level1_2.unity
+    guid: 94192d561cea9864cb0e66e83db1c937
+  - enabled: 1
+    path: Assets/Scenes/Level1_2Office.unity
+    guid: 7fb0933ebf567944fba353b804d9c958
+  - enabled: 1
+    path: Assets/Scenes/Level1_BossScene.unity
+    guid: dd4ee28bba4c11849afdf6fd05852a2d
+  - enabled: 1
     path: Assets/Scenes/GameScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
