@@ -37,15 +37,16 @@ public class GameController : MonoBehaviour
 
     private void SceneChange(Scene scene, LoadSceneMode mode)
     {
-        var startPosition = scene.GetRootGameObjects().Where(x => x.name.Contains("StartPosition")).First().transform;
+        var startPosition = scene.GetRootGameObjects().Where(x => x.name.Contains("StartPosition")).FirstOrDefault();
         if (startPosition != null)
         {
-            _player.transform.position = startPosition.position;
+            _player.transform.position = startPosition.transform.position;
 
         }
         else
         {
-            throw new System.Exception("Dang Thing!");
+            Debug.LogWarning("No start position on this scene.");
+            return;
         }
     }
 

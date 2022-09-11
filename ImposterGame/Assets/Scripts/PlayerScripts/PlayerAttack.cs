@@ -36,30 +36,19 @@ public class PlayerAttack : MonoBehaviour
 
         inputActions = new PlayerInputActions();
         inputActions.Enable();
-        inputActions.Player.Aim.started += ctx => {
-            aiming = true;
-            playerAnimator.SetBool("isAiming", true);
-            GetProjectile();
-        };
-        inputActions.Player.Fire.performed += ctx => {
-            if (aiming)
-            {
-                playerAnimator.SetTrigger("Throw");
-                OnThrow?.Invoke(_projectileData);
-            }
-        };
-        inputActions.Player.Aim.canceled += ctx => {
-            aiming = false;
-            playerAnimator.SetBool("isAiming", false);
-            ResetSpeed();
-            if (currentProjectile != null) 
-            { 
-                currentProjectile.held = false;
-                //Destroy(currentProjectile.gameObject);
-            }
-        };
+        inputActions.Player.Aim.started += OnAimStart;
+        inputActions.Player.Fire.performed += OnFire;
+        inputActions.Player.Aim.canceled += OnAimStop;
 
         inputActions.Player.Melee.performed += ctx => Melee();
+    }
+
+    private void OnDestroy()
+    {
+        inputActions.Player.Aim.started -= OnAimStart;
+        inputActions.Player.Aim.canceled -= OnAimStop;
+        inputActions.Player.Fire.performed -= OnFire;
+        inputActions.Player.Melee.performed -= ctx => Melee();
     }
 
     private void Update()
@@ -71,6 +60,34 @@ public class PlayerAttack : MonoBehaviour
             player.FlipPlayer(true);
             if (currentProjectile != null && !currentProjectile.thrown) HoldProjectile();
             Utils.DrawTrajectory(firePoint);
+        }
+    }
+
+    private void OnFire(InputAction.CallbackContext context)
+    {
+        if (aiming)
+        {
+            playerAnimator.SetTrigger("Throw");
+            OnThrow?.Invoke(_projectileData);
+        }
+    }
+
+    private void OnAimStart(InputAction.CallbackContext context)
+    {
+        aiming = true;
+        playerAnimator.SetBool("isAiming", true);
+        GetProjectile();
+    }
+
+    private void OnAimStop(InputAction.CallbackContext context)
+    {
+        aiming = false;
+        playerAnimator.SetBool("isAiming", false);
+        ResetSpeed();
+        if (currentProjectile != null)
+        {
+            currentProjectile.held = false;
+            //Destroy(currentProjectile.gameObject);
         }
     }
 
