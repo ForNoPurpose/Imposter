@@ -6,7 +6,6 @@ public class SwitchScenes : MonoBehaviour
 {
     private void Start()
     {
-        
     }
     public void SwitchScene(string sceneName)
     {

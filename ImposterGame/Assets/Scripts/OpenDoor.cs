@@ -24,6 +24,8 @@ public class OpenDoor : MonoBehaviour
         sceneTransition = FindObjectOfType<SwitchScenes>();
         _lockSprite.SetActive(false);
         _unlockedSprite.SetActive(false);
+        _inputActions = new PlayerInputActions();
+        _inputActions.Enable();
     }
     private void Update()
     {
@@ -42,8 +44,6 @@ public class OpenDoor : MonoBehaviour
         {
             doorIsLocked = false;
             _unlockedSprite.SetActive(true);
-            _inputActions = new PlayerInputActions();
-            _inputActions.Enable();
 
             if (Input.GetKeyDown(KeyCode.E))
             {
