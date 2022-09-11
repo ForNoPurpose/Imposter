@@ -8,10 +8,15 @@ using TMPro;
 
 public class SceneObject : MonoBehaviour, IInteractable, ICopiable
 {
-    [SerializeField] private ItemDataSO _itemData;
+    [SerializeField] private ItemDataSO _itemData = null;
 
     public static event Action OnInteract;
     public static event Action<ItemDataSO> OnPickup;
+
+    private void OnValidate()
+    {
+        name = GetComponent<SpriteRenderer>().sprite.name;
+    }
 
     public void Interact()
     {
@@ -27,9 +32,7 @@ public class SceneObject : MonoBehaviour, IInteractable, ICopiable
 
     private void Start()
     {
-        var sprite = GetComponent<SpriteRenderer>();
-        sprite.sprite = _itemData.Icon;
-        if (_itemData.CanCopy)
+        if (_itemData != null && _itemData.CanCopy)
         {
             gameObject.layer = LayerMask.NameToLayer("Interactables");
             var collider = gameObject.AddComponent<PolygonCollider2D>();
