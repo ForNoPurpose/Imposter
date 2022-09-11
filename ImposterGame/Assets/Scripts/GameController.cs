@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -14,9 +15,38 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
-        GameInstance = this;
+        if(GameInstance == null)
+        {
+            GameInstance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
 
         _player = GetComponentInChildren<PlayerMovement>();
+
+        SceneManager.sceneLoaded += SceneChange;
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= SceneChange;
+    }
+
+    private void SceneChange(Scene scene, LoadSceneMode mode)
+    {
+        var startPosition = scene.GetRootGameObjects().Where(x => x.name.Contains("StartPosition")).First().transform;
+        if (startPosition != null)
+        {
+            _player.transform.position = startPosition.position;
+
+        }
+        else
+        {
+            throw new System.Exception("Dang Thing!");
+        }
     }
 
     private void Update()
