@@ -28,6 +28,10 @@ public class SceneObject : MonoBehaviour, IInteractable, ICopiable
     {
         Debug.Log("You Copied this!");
         OnPickup?.Invoke(_itemData);
+        if(_itemData.DestroyOnPickup)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void Start()

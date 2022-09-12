@@ -14,7 +14,8 @@ public class ItemDataSO : ScriptableObject
     [SerializeField] private Sprite _icon;
     [SerializeField] private GameObject _gameModel;
     [SerializeField] private uint _bufferRequired;
-
+    [SerializeField] private KeyType _keyType = KeyType.None;
+    [SerializeField] private bool _destroyOnPickup;
     public string ID => _id;
     public string DisplayName => _displayName;
     public string Description => _description;
@@ -23,4 +24,7 @@ public class ItemDataSO : ScriptableObject
     public Sprite Icon => _icon;
     public GameObject GameModel => _gameModel;
     public uint BufferRequired => _bufferRequired;
+    public KeyType KeyType => _keyType;
+
+    public bool DestroyOnPickup => _destroyOnPickup;
 }
