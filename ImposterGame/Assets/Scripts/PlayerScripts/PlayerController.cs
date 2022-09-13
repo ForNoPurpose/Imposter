@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 {
     public static PlayerController instance;
     
-    public HealthSystem playerHealth;
+    public HealthSystem playerHealth = new(100f);
     public uint playerBufferMaxSize;
     public uint playerBufferCurrentSize = 0;
     [SerializeField] private uint playerLevel = 0;
