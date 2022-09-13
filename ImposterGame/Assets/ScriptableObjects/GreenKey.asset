@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4cb5596c5a4fd674fbbb1a1f13b7847e, type: 3}
-  m_Name: BlueKey
+  m_Name: GreenKey
   m_EditorClassIdentifier: 
-  _id: BlueKey
-  _displayName: Blue Key
-  _description: Key to a blue lock.
+  _id: GreenKey
+  _displayName: Green Key
+  _description: Key to a green lock.
   _itemType: 3
   _canCopy: 1
-  _icon: {fileID: 21300000, guid: 3dcf6cd874fa08b4ab8a251ce564c35b, type: 3}
-  _gameModel: {fileID: 1274068920349318994, guid: 95a44f737147e4545986868a48d8da6b, type: 3}
+  _icon: {fileID: 21300000, guid: 4cdf42d2d555812468508ef74db8a9b1, type: 3}
+  _gameModel: {fileID: 0}
   _bufferRequired: 0
-  _keyType: 1
+  _keyType: 2
   _destroyOnPickup: 1
