@@ -2668,13 +2668,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 114731032}
     m_Modifications:
+    - target: {fileID: 5996040376684247966, guid: 9bc300e392024bf438aba2b2aeb080ca, type: 3}
+      propertyPath: _itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: bbbec6bea0ccf4d4885fd74faca0e3f4, type: 2}
     - target: {fileID: 7721261790457566168, guid: 9bc300e392024bf438aba2b2aeb080ca, type: 3}
       propertyPath: m_RootOrder
       value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 7721261790457566168, guid: 9bc300e392024bf438aba2b2aeb080ca, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.59797287
+      value: -0.5479641
       objectReference: {fileID: 0}
     - target: {fileID: 7721261790457566168, guid: 9bc300e392024bf438aba2b2aeb080ca, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2714,14 +2718,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7721261790457566171, guid: 9bc300e392024bf438aba2b2aeb080ca, type: 3}
       propertyPath: m_Name
-      value: WaterCooler (2)
+      value: Key
       objectReference: {fileID: 0}
     - target: {fileID: 7721261790457566174, guid: 9bc300e392024bf438aba2b2aeb080ca, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 6c6b28ad2b79d6e41a27e4d4a7c596ac, type: 3}
-    m_RemovedComponents:
-    - {fileID: 5996040376684247966, guid: 9bc300e392024bf438aba2b2aeb080ca, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9bc300e392024bf438aba2b2aeb080ca, type: 3}
 --- !u!4 &999593813 stripped
 Transform:

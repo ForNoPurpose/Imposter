@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     private void AddToBuffer(ItemDataSO itemData)
     {
-        if (playerBufferCurrentSize + itemData.BufferRequired <= playerBufferMaxSize)
+        if (playerBufferCurrentSize + itemData.BufferRequired <= playerBufferMaxSize && itemData.Type == ItemType.Projectile)
         {
             _playerBuffer.Add(itemData);
             playerBufferCurrentSize += itemData.BufferRequired;
