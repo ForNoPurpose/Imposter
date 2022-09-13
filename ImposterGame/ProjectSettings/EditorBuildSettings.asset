@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Level1_2.unity
     guid: 94192d561cea9864cb0e66e83db1c937
   - enabled: 1
+    path: Assets/Scenes/Level1_2_Office.unity
+    guid: be68a55f38b47954fba9d0dfaf5693b5
+  - enabled: 1
     path: Assets/Scenes/Level1_BossScene.unity
     guid: dd4ee28bba4c11849afdf6fd05852a2d
   - enabled: 1
