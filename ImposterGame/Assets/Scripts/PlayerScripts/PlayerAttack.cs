@@ -25,6 +25,8 @@ public class PlayerAttack : MonoBehaviour
 
     public static event Action<ItemDataSO> OnThrow;
 
+    public AudioSource meleeSound;
+
     private void Awake()
     {
         player = GetComponent<PlayerMovement>();
@@ -115,6 +117,10 @@ public class PlayerAttack : MonoBehaviour
         {
             playerAnimator.SetTrigger("Attack");
         }
+    }
+    private void MeleeSound()
+    {
+        meleeSound.Play();
     }
 
     private void GetMeleeWeapon()
