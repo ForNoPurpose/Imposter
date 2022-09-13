@@ -6,5 +6,14 @@ public enum ItemType
 {
     Projectile,
     Melee,
-    Decoration
+    Decoration,
+    Unlockable
+}
+public enum KeyType
+{
+    Gold,
+    Blue,
+    Green,
+    Red,
+    None
 }

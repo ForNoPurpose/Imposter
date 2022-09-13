@@ -3,35 +3,40 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using System;
 
-public class OpenDoor : MonoBehaviour
+public class OpenDoor : MonoBehaviour, IInteractable
 {
     private bool _playerDetected;
     public Transform doorPosition;
     public float doorWidth;
     public float doorHeight;
-    private PlayerInputActions _inputActions;
     SwitchScenes sceneTransition;
     public LayerMask whatIsPlayer;
     public bool doorIsLocked = false;
-    public bool playerHasKey = false;
 
     [SerializeField] private string _sceneName;
     [SerializeField] private GameObject _lockSprite;
     [SerializeField] private GameObject _unlockedSprite;
+
+    [SerializeField] private KeyType _keyType;
+
+    public static event Action<KeyType> OnUnlock;
+
+    KeyHolder keyHolder;
+
     private void Start()
     {
+        keyHolder = FindObjectOfType<KeyHolder>();
         sceneTransition = FindObjectOfType<SwitchScenes>();
         _lockSprite.SetActive(false);
         _unlockedSprite.SetActive(false);
-        _inputActions = new PlayerInputActions();
-        _inputActions.Enable();
     }
     private void Update()
     {
         _playerDetected = Physics2D.OverlapBox(doorPosition.position, new Vector2(doorWidth, doorHeight), 0, whatIsPlayer);
 
-        if (_playerDetected && !playerHasKey)
+        if (_playerDetected && doorIsLocked)
         {
             doorIsLocked = true;
             _lockSprite.SetActive(true);
@@ -40,9 +45,8 @@ public class OpenDoor : MonoBehaviour
         {
             _lockSprite.SetActive(false);
         }
-        if (_playerDetected && playerHasKey)
+        if (_playerDetected && !doorIsLocked)
         {
-            doorIsLocked = false;
             _unlockedSprite.SetActive(true);
 
             if (Input.GetKeyDown(KeyCode.E))
@@ -55,6 +59,15 @@ public class OpenDoor : MonoBehaviour
             _unlockedSprite.SetActive(false);
         }
 
+    }
+    public void Interact()
+    {
+        Debug.Log("You interacted");
+        if(keyHolder.ContainsKey(_keyType))
+        {
+            doorIsLocked = false;
+            OnUnlock?.Invoke(_keyType);
+        }
     }
     private void OnDrawGizmosSelected()
     {
