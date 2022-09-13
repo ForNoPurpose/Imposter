@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EnemyController : Controller, IDamageable
 {
-    public HealthSystem _enemyHealth;
+    public HealthSystem _enemyHealth = new(100f);
     public Animator _enemyAnimator;
     public Rigidbody2D _enemyRB;
 

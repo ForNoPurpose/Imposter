@@ -2,21 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "HealthSystem", menuName = "ScriptableObjects/HealthSystem", order = 1)]
-public class HealthSystem : ScriptableObject
+public class HealthSystem
 {
     public float maxHealth;
     public float health;
     public float resistance;
 
-
-    public void OnEnable()
+    public void Awake()
     {
         health = maxHealth;
     }
 
-    public void Awake()
+    public HealthSystem(float maxHealth, float resistance = 1f)
     {
-        health = maxHealth;
+        this.maxHealth = maxHealth;
+        this.health = maxHealth;
+        this.resistance = resistance;
     }
 }

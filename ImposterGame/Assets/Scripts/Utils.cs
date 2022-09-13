@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 namespace CustomUtilities
 {
@@ -53,6 +56,51 @@ namespace CustomUtilities
                 Vector3 drawPoint = startPoint.position + drawDisplacement;
                 Debug.DrawLine(previousDrawPoint, drawPoint, Color.green);
                 previousDrawPoint = drawPoint;
+            }
+        }
+
+        public static Dictionary<string, SceneState> GetSceneList()
+        {
+            Dictionary<string, SceneState> sceneList = new();
+            for (int i = 0; i < SceneManager.sceneCountInBuildSettings; i++)
+            {
+                var temp = Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(i));
+                sceneList.Add(
+                    temp,
+                    new SceneState(temp)
+                    );
+            }
+            return sceneList;
+        }
+
+        public sealed class SceneState
+        {
+            public string name;
+            public Vector3 startPos;
+            public Vector3 exitPos;
+            public int visitCount;
+
+            public SceneState(string name)
+            {
+                this.name = name; 
+                this.startPos = Vector3.zero; 
+                this.exitPos = Vector3.zero;
+                visitCount = 0;
+            }
+
+            public void AddVisit()
+            {
+                visitCount++;
+            }
+
+            public void SetStartPos(Vector3 pos)
+            {
+                startPos = pos;
+            }
+
+            public void SetExitPos(Vector3 pos)
+            {
+                exitPos = pos;
             }
         }
     } 
