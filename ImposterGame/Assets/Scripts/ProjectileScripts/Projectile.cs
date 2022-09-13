@@ -59,7 +59,7 @@ public class Projectile : MonoBehaviour
     {
         rb.simulated = true;
         //float movementSpeed = speed * _direction;
-        print(Utils.GetTrajectory(transform).initialVelocity);
+        //print(Utils.GetTrajectory(transform).initialVelocity);
         rb.velocity = Utils.GetTrajectory(transform).initialVelocity;
         transform.rotation = Quaternion.identity;
         Invoke("Disable", lifetime);
@@ -79,7 +79,7 @@ public class Projectile : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.tag == origin.ToString()) return;
-        Debug.Log($"{collision.collider.name}");
+        //Debug.Log($"{collision.collider.name}");
 
         collision.collider.TryGetComponent(out IDamageable damageable);
         if(damageable != null)
