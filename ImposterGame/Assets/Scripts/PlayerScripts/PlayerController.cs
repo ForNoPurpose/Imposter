@@ -73,6 +73,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     public void Damage(float amount)
     {
         if (!_canTakeDamage) return;
+        _canTakeDamage = false;
         playerHealth.health -= amount / playerHealth.resistance;
         if (playerHealth.health <= 0)
         {
@@ -82,11 +83,11 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     private void DamageTimer()
     {
-        if (!_canTakeDamage && _damageTimer > 0)
+        if (!_canTakeDamage)
         {
             _damageTimer -= Time.deltaTime;
         }
-        else
+        if(_damageTimer < 0)
         {
             _canTakeDamage = true;
             _damageTimer = 1f;
