@@ -96,7 +96,6 @@ public class PlayerAttack : MonoBehaviour
     {
         if (cooldownTimer < attackCooldown || !aiming) return;
         cooldownTimer = 0;
-        AudioManager.instance.PlaySound("MeleeSound");
 
         if (currentProjectile != null)
         {
@@ -109,6 +108,10 @@ public class PlayerAttack : MonoBehaviour
         {
             GetProjectile();
         }
+    }
+    private void ThrowAudio()
+    {
+        AudioManager.instance.PlaySound("MeleeSound");
     }
 
     private void Melee(InputAction.CallbackContext context)
