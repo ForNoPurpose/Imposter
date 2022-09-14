@@ -14,7 +14,6 @@ public class PlayerMovement : MonoBehaviour
     private Animator playerAnimator;
 
     public PlayerInputActions inputActions;
-    public AudioSource runningSound;
     private void Awake()
     {
         body = GetComponent<Rigidbody2D>();
@@ -55,6 +54,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             body.velocity += new Vector2(0, jumpSpeed);
+            AudioManager.instance.PlaySound("JumpSound");
             //Debug.DrawLine(playerCollider.bounds.center, playerCollider.bounds.center - new Vector3(0,playerCollider.bounds.extents.y + 0.03f, 0), Color.red, 5f);
         }
     }
@@ -66,13 +66,15 @@ public class PlayerMovement : MonoBehaviour
         body.velocity = playerVelocity;
 
         if (Mathf.Abs(body.velocity.x) > Mathf.Epsilon)
+        {
             playerAnimator.SetBool("isRunning", true);
+        }
         else
             playerAnimator.SetBool("isRunning", false);
     }
     private void RunningSound()
     {
-        runningSound.Play();
+        AudioManager.instance.PlaySound("FootStep");
     }
 
     public void FlipPlayer(bool faceCursor = false)
