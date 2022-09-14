@@ -54,6 +54,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             body.velocity += new Vector2(0, jumpSpeed);
+            FindObjectOfType<AudioManager>().PlaySound("JumpSound");
             //Debug.DrawLine(playerCollider.bounds.center, playerCollider.bounds.center - new Vector3(0,playerCollider.bounds.extents.y + 0.03f, 0), Color.red, 5f);
         }
     }

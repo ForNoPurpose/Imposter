@@ -355,16 +355,28 @@ MonoBehaviour:
   sounds:
   - name: FootStep
     audioClip: {fileID: 8300000, guid: 3e639d1fd1109cd468013fd4bacd262e, type: 3}
-    volume: 0.235
+    volume: 0.173
     pitch: 0.645
     randomVolumeRange: 0.1
     randomPitchRange: 0.1
   - name: MeleeSound
     audioClip: {fileID: 8300000, guid: 94e671a1c8fb68d44b58c89eb04a47f8, type: 3}
-    volume: 0.13
+    volume: 0.106
     pitch: 0.853
-    randomVolumeRange: 0.1
-    randomPitchRange: 0.1
+    randomVolumeRange: 0.081
+    randomPitchRange: 0.157
+  - name: JumpSound
+    audioClip: {fileID: 8300000, guid: af458e522ef44bb47872d01d2cba87f8, type: 3}
+    volume: 0.149
+    pitch: 1.08
+    randomVolumeRange: 0.081
+    randomPitchRange: 0.016
+  - name: DoorSound
+    audioClip: {fileID: 8300000, guid: 3700a0646c78cb74499a17f1749439d2, type: 3}
+    volume: 0.149
+    pitch: 1.08
+    randomVolumeRange: 0.081
+    randomPitchRange: 0.016
 --- !u!4 &19108637
 Transform:
   m_ObjectHideFlags: 0
@@ -2172,7 +2184,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 558819629}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -30.3, y: -3.12, z: -0.03825355}
+  m_LocalPosition: {x: -23.97, y: -3.12, z: -0.03825355}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

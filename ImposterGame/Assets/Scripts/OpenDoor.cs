@@ -51,6 +51,7 @@ public class OpenDoor : MonoBehaviour, IInteractable
 
             if (Input.GetKeyDown(KeyCode.E))
             {
+                FindObjectOfType<AudioManager>().PlaySound("DoorSound");
                 sceneTransition.SwitchScene(_sceneName);
             }
         }
