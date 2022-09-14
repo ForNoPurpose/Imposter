@@ -72,9 +72,14 @@ public class PlayerMovement : MonoBehaviour
         else
             playerAnimator.SetBool("isRunning", false);
     }
-    private void RunningSound()
+    private void FirstStep()
     {
-        AudioManager.instance.PlaySound("FootStep");
+        AudioManager.instance.PlaySound("FirstFootStep");
+    }
+    
+    private void SecondStep()
+    {
+        AudioManager.instance.PlaySound("SecondFootStep");
     }
 
     public void FlipPlayer(bool faceCursor = false)

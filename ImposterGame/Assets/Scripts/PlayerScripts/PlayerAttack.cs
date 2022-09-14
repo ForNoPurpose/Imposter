@@ -96,7 +96,6 @@ public class PlayerAttack : MonoBehaviour
     {
         if (cooldownTimer < attackCooldown || !aiming) return;
         cooldownTimer = 0;
-        FindObjectOfType<AudioManager>().PlaySound("MeleeSound");
 
         if (currentProjectile != null)
         {
@@ -110,6 +109,10 @@ public class PlayerAttack : MonoBehaviour
             GetProjectile();
         }
     }
+    private void ThrowAudio()
+    {
+        AudioManager.instance.PlaySound("MeleeSound");
+    }
 
     private void Melee(InputAction.CallbackContext context)
     {
@@ -122,7 +125,7 @@ public class PlayerAttack : MonoBehaviour
     private void GetMeleeWeapon()
     {
         meleeWeapon.gameObject.SetActive(true);
-        FindObjectOfType<AudioManager>().PlaySound("MeleeSound");
+        AudioManager.instance.PlaySound("MeleeSound");
     }
 
     private void HideMeleeWeapon()
