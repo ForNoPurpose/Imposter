@@ -14,7 +14,6 @@ public class PlayerMovement : MonoBehaviour
     private Animator playerAnimator;
 
     public PlayerInputActions inputActions;
-    public AudioSource runningSound;
     private void Awake()
     {
         body = GetComponent<Rigidbody2D>();
@@ -66,13 +65,11 @@ public class PlayerMovement : MonoBehaviour
         body.velocity = playerVelocity;
 
         if (Mathf.Abs(body.velocity.x) > Mathf.Epsilon)
+        {
             playerAnimator.SetBool("isRunning", true);
+        }
         else
             playerAnimator.SetBool("isRunning", false);
-    }
-    private void RunningSound()
-    {
-        runningSound.Play();
     }
 
     public void FlipPlayer(bool faceCursor = false)
