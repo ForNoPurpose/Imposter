@@ -38,8 +38,11 @@ public class OpenDoor : MonoBehaviour, IInteractable
 
         if (_playerDetected && doorIsLocked)
         {
-            doorIsLocked = true;
             _lockSprite.SetActive(true);
+            if(Input.GetKeyDown(KeyCode.E))
+            {
+                AudioManager.instance.PlaySound("ErrorSound");
+            }
         }
         else
         {
@@ -51,7 +54,7 @@ public class OpenDoor : MonoBehaviour, IInteractable
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                FindObjectOfType<AudioManager>().PlaySound("DoorSound");
+                AudioManager.instance.PlaySound("DoorSound");
                 sceneTransition.SwitchScene(_sceneName);
             }
         }
