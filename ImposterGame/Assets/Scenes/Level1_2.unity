@@ -367,8 +367,8 @@ MonoBehaviour:
     randomPitchRange: 0.157
   - name: JumpSound
     audioClip: {fileID: 8300000, guid: af458e522ef44bb47872d01d2cba87f8, type: 3}
-    volume: 0.149
-    pitch: 1.08
+    volume: 0.178
+    pitch: 0.85
     randomVolumeRange: 0.081
     randomPitchRange: 0.016
   - name: DoorSound
@@ -529,9 +529,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1988211004, guid: 71ff483cf5dc9ce4f865593fde9006ab, type: 3}
-    - {fileID: 1988210995, guid: 71ff483cf5dc9ce4f865593fde9006ab, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71ff483cf5dc9ce4f865593fde9006ab, type: 3}
 --- !u!114 &51879118 stripped
 MonoBehaviour:

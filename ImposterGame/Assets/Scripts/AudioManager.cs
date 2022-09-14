@@ -29,6 +29,10 @@ public class Sound
         _audioSource.pitch = pitch * (1 + Random.Range(-randomPitchRange / 2f, randomPitchRange / 2f)); ;
         _audioSource.Play();
     }
+    public void StopAudio()
+    {
+        _audioSource.Stop();
+    }
 }
 public class AudioManager : MonoBehaviour
 {
@@ -71,5 +75,16 @@ public class AudioManager : MonoBehaviour
         }
 
         Debug.Log($"AudioManager: Sound not found in sound array: {name}");
+    }
+    public void StopSound(string name)
+    {
+        for (int i = 0; i < sounds.Length; i++)
+        {
+            if (sounds[i].name == name)
+            {
+                sounds[i].StopAudio();
+                return;
+            }
+        }
     }
 }
