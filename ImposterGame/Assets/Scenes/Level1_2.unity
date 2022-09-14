@@ -358,7 +358,7 @@ MonoBehaviour:
     volume: 0.173
     pitch: 0.645
     randomVolumeRange: 0.1
-    randomPitchRange: 0.1
+    randomPitchRange: 0.181
   - name: MeleeSound
     audioClip: {fileID: 8300000, guid: 94e671a1c8fb68d44b58c89eb04a47f8, type: 3}
     volume: 0.106
