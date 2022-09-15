@@ -25,6 +25,10 @@ public class Sound
     }
     public void PlayAudio()
     {
+        if (_audioSource == null)
+        {
+            return;
+        }
         _audioSource.volume = volume * (1 + Random.Range(-randomVolumeRange / 2f, randomVolumeRange / 2f));
         _audioSource.pitch = pitch * (1 + Random.Range(-randomPitchRange / 2f, randomPitchRange / 2f)); ;
         _audioSource.Play();
@@ -45,6 +49,7 @@ public class AudioManager : MonoBehaviour
         {
             Debug.Log("More than one audio manager in scene.");
             Destroy(gameObject);
+            return;
         }
         else
         {

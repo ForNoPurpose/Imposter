@@ -8,12 +8,14 @@ using System;
 public class OpenDoor : MonoBehaviour, IInteractable
 {
     private bool _playerDetected;
-    public Transform doorPosition;
-    public float doorWidth;
-    public float doorHeight;
+    public Transform entrancePosition;
+    public float entranceWidth;
+    public float entranceHeight;
     SwitchScenes sceneTransition;
     public LayerMask whatIsPlayer;
-    public bool doorIsLocked = false;
+    public bool isStaircase;
+    public bool isDoorway;
+    public bool entranceIsLocked = false;
 
     [SerializeField] private string _sceneName;
     [SerializeField] private GameObject _lockSprite;
@@ -25,7 +27,7 @@ public class OpenDoor : MonoBehaviour, IInteractable
 
     KeyHolder keyHolder;
 
-    private void Awake()
+    private void Start()
     {
         keyHolder = FindObjectOfType<KeyHolder>();
         sceneTransition = FindObjectOfType<SwitchScenes>();
@@ -34,11 +36,12 @@ public class OpenDoor : MonoBehaviour, IInteractable
     }
     private void Update()
     {
-        _playerDetected = Physics2D.OverlapBox(doorPosition.position, new Vector2(doorWidth, doorHeight), 0, whatIsPlayer);
+        _playerDetected = Physics2D.OverlapBox(entrancePosition.position, new Vector2(entranceWidth, entranceHeight), 0, whatIsPlayer);
 
-        if (_playerDetected && doorIsLocked)
+        if (_playerDetected && entranceIsLocked)
         {
             _lockSprite.SetActive(true);
+
             if(Input.GetKeyDown(KeyCode.E))
             {
                 AudioManager.instance.PlaySound("ErrorSound");
@@ -48,13 +51,18 @@ public class OpenDoor : MonoBehaviour, IInteractable
         {
             _lockSprite.SetActive(false);
         }
-        if (_playerDetected && !doorIsLocked)
+        if (_playerDetected && !entranceIsLocked)
         {
             _unlockedSprite.SetActive(true);
 
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E) && isDoorway)
             {
                 AudioManager.instance.PlaySound("DoorSound");
+                sceneTransition.SwitchScene(_sceneName);
+            }
+            else if (Input.GetKeyDown(KeyCode.E) && isStaircase)
+            {
+                AudioManager.instance.PlaySound("StairsSound");
                 sceneTransition.SwitchScene(_sceneName);
             }
         }
@@ -66,17 +74,15 @@ public class OpenDoor : MonoBehaviour, IInteractable
     }
     public void Interact()
     {
-        if(keyHolder == null) keyHolder = FindObjectOfType<KeyHolder>();
-        Debug.Log("You interacted");
         if(keyHolder.ContainsKey(_keyType))
         {
-            doorIsLocked = false;
+            entranceIsLocked = false;
             OnUnlock?.Invoke(_keyType);
         }
     }
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireCube(doorPosition.position, new Vector3(doorWidth, doorHeight, 1));
+        Gizmos.DrawWireCube(entrancePosition.position, new Vector3(entranceWidth, entranceHeight, 1));
     }
 }

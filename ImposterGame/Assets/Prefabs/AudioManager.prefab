@@ -1,0 +1,113 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3115989097258168786
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3115989097258168788}
+  - component: {fileID: 3115989097258168789}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3115989097258168788
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3115989097258168786}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.6349984, y: 1.0226085, z: -9.9904375}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3115989097258168789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3115989097258168786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27fb1a22288c1df4388a46ad61ffd19f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: FirstFootStep
+    audioClip: {fileID: 8300000, guid: 905e701a18054d940bf9b830d8f91aa0, type: 3}
+    volume: 0.06
+    pitch: 0.645
+    randomVolumeRange: 0.1
+    randomPitchRange: 0.142
+  - name: MeleeSound
+    audioClip: {fileID: 8300000, guid: 94e671a1c8fb68d44b58c89eb04a47f8, type: 3}
+    volume: 0.106
+    pitch: 0.853
+    randomVolumeRange: 0.081
+    randomPitchRange: 0.157
+  - name: JumpSound
+    audioClip: {fileID: 8300000, guid: af458e522ef44bb47872d01d2cba87f8, type: 3}
+    volume: 0.125
+    pitch: 0.85
+    randomVolumeRange: 0.081
+    randomPitchRange: 0.016
+  - name: DoorSound
+    audioClip: {fileID: 8300000, guid: 3700a0646c78cb74499a17f1749439d2, type: 3}
+    volume: 0.149
+    pitch: 1.08
+    randomVolumeRange: 0.081
+    randomPitchRange: 0.016
+  - name: ErrorSound
+    audioClip: {fileID: 8300000, guid: 14735d27da90d324abc69a6a456948dd, type: 3}
+    volume: 0.149
+    pitch: 0.659
+    randomVolumeRange: 0.081
+    randomPitchRange: 0.016
+  - name: SecondFootStep
+    audioClip: {fileID: 8300000, guid: 3f96da95ed870d449ad181a8e9de8349, type: 3}
+    volume: 0.06
+    pitch: 0.659
+    randomVolumeRange: 0.081
+    randomPitchRange: 0.123
+  - name: ScanSound
+    audioClip: {fileID: 8300000, guid: 183dac66d52e99b4a96e5416c0cc0209, type: 3}
+    volume: 0.369
+    pitch: 1
+    randomVolumeRange: 0.065
+    randomPitchRange: 0
+  - name: StairsSound
+    audioClip: {fileID: 8300000, guid: 91306cbd09c1f5f4ba54cdfc4b9b17f3, type: 3}
+    volume: 0.08
+    pitch: 1
+    randomVolumeRange: 0.065
+    randomPitchRange: 0
+  - name: MenuClickSound
+    audioClip: {fileID: 8300000, guid: 47663b2f5c20bdf46ace7cc75540e7ed, type: 3}
+    volume: 0.23
+    pitch: 1
+    randomVolumeRange: 0
+    randomPitchRange: 0
+  - name: MenuScrollSound
+    audioClip: {fileID: 8300000, guid: 91a991b0c2f0feb4bacbcc8fe98dfbf4, type: 3}
+    volume: 0.15
+    pitch: 1
+    randomVolumeRange: 0
+    randomPitchRange: 0
+  - name: MainMenuSong
+    audioClip: {fileID: 8300000, guid: a8281b6f5779bbe47a6687107b9a9a09, type: 3}
+    volume: 0.086
+    pitch: 1
+    randomVolumeRange: 0
+    randomPitchRange: 0
