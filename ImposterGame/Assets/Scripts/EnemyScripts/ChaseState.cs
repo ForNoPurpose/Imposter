@@ -18,9 +18,17 @@ public class ChaseState : AIStateSO
         if(_target != null)
         {
             controller.TryGetComponent(out Animator _enemyAnimator);
-            controller.transform.localScale = new Vector3(Mathf.Sign(controller.transform.position.x - _target.position.x), 1, 1);
+            controller.transform.localScale = new Vector3(
+                Mathf.Sign(controller.transform.position.x - _target.position.x) * controller.transform.localScale.x,
+                controller.transform.localScale.y,
+                controller.transform.localScale.z
+                );
             controller.transform.position = Vector3.MoveTowards(controller.transform.position, _target.position, 1f * Time.deltaTime);
-            _enemyAnimator.SetBool("isMoving", true);
+            if (_enemyAnimator != null)
+            {
+                _enemyAnimator.SetBool("isMoving", true);
+
+            }        
         }
     }
 }
