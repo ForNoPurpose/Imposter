@@ -53,6 +53,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         if (playerBufferCurrentSize + itemData.BufferRequired <= playerBufferMaxSize && itemData.Type == ItemType.Projectile)
         {
+            AudioManager.instance.PlaySound("ScanSound");
             _playerBuffer.Add(itemData);
             playerBufferCurrentSize += itemData.BufferRequired;
         }

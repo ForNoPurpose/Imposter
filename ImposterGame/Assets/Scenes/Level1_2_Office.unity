@@ -1816,7 +1816,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 24ffd7576bbc3ce4e98e5245f60ddb05, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -6882,34 +6882,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6783648606150598486, guid: cc558ea92936da54395084cac6f9d3a1, type: 3}
       propertyPath: m_Name
-      value: DoorCollider
+      value: EntranceCollider
       objectReference: {fileID: 0}
     - target: {fileID: 6783648606150598487, guid: cc558ea92936da54395084cac6f9d3a1, type: 3}
-      propertyPath: _keyType
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6783648606150598487, guid: cc558ea92936da54395084cac6f9d3a1, type: 3}
-      propertyPath: _sceneName
-      value: Level1_2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6783648606150598487, guid: cc558ea92936da54395084cac6f9d3a1, type: 3}
-      propertyPath: doorIsLocked
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6783648606150598487, guid: cc558ea92936da54395084cac6f9d3a1, type: 3}
-      propertyPath: playerHasKey
+      propertyPath: isDoorway
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6783648606417021360, guid: cc558ea92936da54395084cac6f9d3a1, type: 3}
-      propertyPath: m_Sprite
+    - target: {fileID: 6783648606150598487, guid: cc558ea92936da54395084cac6f9d3a1, type: 3}
+      propertyPath: entranceWidth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6783648606150598487, guid: cc558ea92936da54395084cac6f9d3a1, type: 3}
+      propertyPath: entranceHeight
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6783648606150598487, guid: cc558ea92936da54395084cac6f9d3a1, type: 3}
+      propertyPath: entrancePosition
       value: 
-      objectReference: {fileID: 21300000, guid: bf7712adffa12db4f96f1bb54cd09ba8, type: 3}
-    - target: {fileID: 6783648606698788630, guid: cc558ea92936da54395084cac6f9d3a1, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 96f94eef503b29d408d079c66c41fab1, type: 3}
+      objectReference: {fileID: 1994393015}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc558ea92936da54395084cac6f9d3a1, type: 3}
+--- !u!4 &1994393015 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6783648606150598480, guid: cc558ea92936da54395084cac6f9d3a1, type: 3}
+  m_PrefabInstance: {fileID: 1994393014}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2011705735
 PrefabInstance:
   m_ObjectHideFlags: 0
