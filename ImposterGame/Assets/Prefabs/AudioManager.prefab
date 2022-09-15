@@ -93,3 +93,21 @@ MonoBehaviour:
     pitch: 1
     randomVolumeRange: 0.065
     randomPitchRange: 0
+  - name: MenuClickSound
+    audioClip: {fileID: 8300000, guid: 47663b2f5c20bdf46ace7cc75540e7ed, type: 3}
+    volume: 0.23
+    pitch: 1
+    randomVolumeRange: 0
+    randomPitchRange: 0
+  - name: MenuScrollSound
+    audioClip: {fileID: 8300000, guid: 91a991b0c2f0feb4bacbcc8fe98dfbf4, type: 3}
+    volume: 0.15
+    pitch: 1
+    randomVolumeRange: 0
+    randomPitchRange: 0
+  - name: MainMenuSong
+    audioClip: {fileID: 8300000, guid: a8281b6f5779bbe47a6687107b9a9a09, type: 3}
+    volume: 0.086
+    pitch: 1
+    randomVolumeRange: 0
+    randomPitchRange: 0
