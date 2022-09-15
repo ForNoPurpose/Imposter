@@ -68,12 +68,6 @@ public sealed class DialogueTrigger : MonoBehaviour
         else _visited = false;
     }
 
-    //private void OnTriggerExit2D(Collider2D collision)
-    //{
-    //    dialogActive = false;
-    //    _canvas.gameObject.SetActive(false);
-    //}
-
     public void StartDialogue()
     {
         _lines.Clear();

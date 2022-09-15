@@ -69,7 +69,6 @@ public class PlayerAttack : MonoBehaviour
         if (aiming)
         {
             playerAnimator.SetTrigger("Throw");
-            OnThrow?.Invoke(_projectileData);
         }
     }
 
@@ -103,6 +102,7 @@ public class PlayerAttack : MonoBehaviour
             currentProjectile.thrown = true;
             currentProjectile.MugFlightPath();
             currentProjectile = null;
+            OnThrow?.Invoke(_projectileData);
         }
         if (aiming)
         {
