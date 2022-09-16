@@ -62,7 +62,7 @@ public class AudioManager : MonoBehaviour
     {
         for (int i = 0; i < sounds.Length; i++)
         {
-            GameObject gameObject = new GameObject("Sound_" + i + "_" + sounds[i].name);
+            GameObject gameObject = new GameObject($"Sound_{i}_{sounds[i].name}");
             gameObject.transform.SetParent(this.transform);
             // Avoid garbage collector
             sounds[i].SetAudioSource (gameObject.AddComponent<AudioSource>());

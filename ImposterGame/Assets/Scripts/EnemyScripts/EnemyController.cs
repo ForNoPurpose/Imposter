@@ -44,6 +44,7 @@ public class EnemyController : Controller, IDamageable
 
     public void Damage(float amount)
     {
+        AudioManager.instance.PlaySound("DamageSound");
         //transform.position = transform.position + new Vector3(-0.5f, 1f, 0);
         _enemyHealth.health -= amount / _enemyHealth.resistance;
         if (_enemyHealth.health <= 0)
