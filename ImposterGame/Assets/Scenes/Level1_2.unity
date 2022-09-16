@@ -8972,6 +8972,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6783648606150598487, guid: cc558ea92936da54395084cac6f9d3a1, type: 3}
+      propertyPath: entranceIsLocked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6783648606150598487, guid: cc558ea92936da54395084cac6f9d3a1, type: 3}
       propertyPath: entrancePosition
       value: 
       objectReference: {fileID: 1381169402}
