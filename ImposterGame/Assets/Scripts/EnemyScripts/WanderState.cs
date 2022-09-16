@@ -23,9 +23,9 @@ public class WanderState : AIStateSO
         controller.TryGetComponent(out Animator enemyAnimator);
         if (!_destinationReached)
         {
-            enemyAnimator?.SetBool("isMoving", true);
+            if(enemyAnimator != null) enemyAnimator.SetBool("isMoving", true);
             controller.transform.localScale = new Vector3(
-                Mathf.Sign(controller.transform.position.x - _nextPosition.x) * controller.transform.localScale.x,
+                Mathf.Sign(controller.transform.position.x - _nextPosition.x) * Mathf.Abs(controller.transform.localScale.x),
                 controller.transform.localScale.y,
                 controller.transform.localScale.z
                 );
@@ -34,7 +34,7 @@ public class WanderState : AIStateSO
             {
                 controller.transform.position = _nextPosition;
                 _destinationReached = true;
-                enemyAnimator?.SetBool("isMoving", false);
+                if (enemyAnimator != null) enemyAnimator.SetBool("isMoving", false);
             }
             return;
         }

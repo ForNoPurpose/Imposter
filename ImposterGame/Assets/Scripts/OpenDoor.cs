@@ -27,7 +27,7 @@ public class OpenDoor : MonoBehaviour, IInteractable
 
     KeyHolder keyHolder;
 
-    private void Start()
+    private void Awake()
     {
         keyHolder = FindObjectOfType<KeyHolder>();
         sceneTransition = FindObjectOfType<SwitchScenes>();
@@ -74,6 +74,7 @@ public class OpenDoor : MonoBehaviour, IInteractable
     }
     public void Interact()
     {
+        if(keyHolder == null) keyHolder = FindObjectOfType<KeyHolder>();
         if(keyHolder.ContainsKey(_keyType))
         {
             entranceIsLocked = false;
