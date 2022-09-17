@@ -12,14 +12,14 @@ EditorBuildSettings:
     path: Assets/Scenes/NewGameScene.unity
     guid: 71bda47099ed40e4980fdd7abe4ada63
   - enabled: 1
-    path: Assets/Scenes/Level1_2.unity
-    guid: 94192d561cea9864cb0e66e83db1c937
-  - enabled: 1
     path: Assets/Scenes/Level1_1.unity
     guid: 9a19cce4917f8f14998e15f9fc7ad50c
   - enabled: 1
     path: Assets/Scenes/Level1_1_Security_Room.unity
     guid: 6c4e4677342632b43babf915d1bb5c26
+  - enabled: 1
+    path: Assets/Scenes/Level1_2.unity
+    guid: 94192d561cea9864cb0e66e83db1c937
   - enabled: 1
     path: Assets/Scenes/Level1_2_Office.unity
     guid: be68a55f38b47954fba9d0dfaf5693b5

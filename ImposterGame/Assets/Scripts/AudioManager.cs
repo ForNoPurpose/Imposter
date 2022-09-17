@@ -60,6 +60,14 @@ public class AudioManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         SceneManager.sceneLoaded += OnSceneLoaded;
+
+        for (int i = 0; i < sounds.Length; i++)
+        {
+            GameObject gameObject = new GameObject($"Sound_{i}_{sounds[i].name}");
+            gameObject.transform.SetParent(this.transform);
+            // Avoid garbage collector
+            sounds[i].SetAudioSource(gameObject.AddComponent<AudioSource>());
+        }
     }
     
     void OnSceneLoaded(Scene scene, LoadSceneMode sceneMode)
@@ -81,13 +89,7 @@ public class AudioManager : MonoBehaviour
     }
     private void Start()
     {
-        for (int i = 0; i < sounds.Length; i++)
-        {
-            GameObject gameObject = new GameObject($"Sound_{i}_{sounds[i].name}");
-            gameObject.transform.SetParent(this.transform);
-            // Avoid garbage collector
-            sounds[i].SetAudioSource(gameObject.AddComponent<AudioSource>());
-        }
+
     }
     public void PlaySound(string name)
     {
