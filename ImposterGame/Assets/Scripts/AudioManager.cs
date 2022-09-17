@@ -1,6 +1,7 @@
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using Scene = UnityEngine.SceneManagement.Scene;
 
 [System.Serializable]
 public class Sound
@@ -57,6 +58,26 @@ public class AudioManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+    
+    void OnSceneLoaded(Scene scene, LoadSceneMode sceneMode)
+    {
+        switch (scene.name)
+        {
+            case "TitleScene":
+                PlaySound("MainMenuSong");
+                break;
+
+            case "NewGameScene":
+                StopSound("MainMenuSong");
+                break;
+
+            default:
+                PlaySound("GameplaySong");
+                break;
+        }
     }
     private void Start()
     {
@@ -65,7 +86,7 @@ public class AudioManager : MonoBehaviour
             GameObject gameObject = new GameObject($"Sound_{i}_{sounds[i].name}");
             gameObject.transform.SetParent(this.transform);
             // Avoid garbage collector
-            sounds[i].SetAudioSource (gameObject.AddComponent<AudioSource>());
+            sounds[i].SetAudioSource(gameObject.AddComponent<AudioSource>());
         }
     }
     public void PlaySound(string name)
