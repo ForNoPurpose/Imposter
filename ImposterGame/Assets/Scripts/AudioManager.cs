@@ -59,32 +59,12 @@ public class AudioManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
-        SceneManager.sceneLoaded += OnSceneLoaded;
-
         for (int i = 0; i < sounds.Length; i++)
         {
             GameObject gameObject = new GameObject($"Sound_{i}_{sounds[i].name}");
             gameObject.transform.SetParent(this.transform);
             // Avoid garbage collector
             sounds[i].SetAudioSource(gameObject.AddComponent<AudioSource>());
-        }
-    }
-    
-    void OnSceneLoaded(Scene scene, LoadSceneMode sceneMode)
-    {
-        switch (scene.name)
-        {
-            case "TitleScene":
-                PlaySound("MainMenuSong");
-                break;
-
-            case "NewGameScene":
-                StopSound("MainMenuSong");
-                break;
-
-            default:
-                PlaySound("GameplaySong");
-                break;
         }
     }
     private void Start()
