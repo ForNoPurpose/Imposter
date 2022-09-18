@@ -14393,18 +14393,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6569251147051744018, guid: 71ff483cf5dc9ce4f865593fde9006ab, type: 3}
-      propertyPath: _jumpColliderRadius
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6569251147051744018, guid: 71ff483cf5dc9ce4f865593fde9006ab, type: 3}
-      propertyPath: _jumpColliderOffset.y
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6569251147051744018, guid: 71ff483cf5dc9ce4f865593fde9006ab, type: 3}
-      propertyPath: _jumpableLayer.m_Bits
-      value: 2048
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71ff483cf5dc9ce4f865593fde9006ab, type: 3}
 --- !u!4 &6569251145758032513 stripped
