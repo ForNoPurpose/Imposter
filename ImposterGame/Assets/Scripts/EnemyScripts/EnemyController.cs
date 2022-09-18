@@ -45,7 +45,8 @@ public class EnemyController : Controller, IDamageable
     public void Damage(float amount)
     {
         AudioManager.instance.PlaySound("DamageSound");
-        //transform.position = transform.position + new Vector3(-0.5f, 1f, 0);
+        var sign = Mathf.Sign(FindObjectOfType<PlayerController>().transform.position.x - transform.position.x);
+        transform.position = transform.position + new Vector3(-(0.2f * sign), 0.2f, 0);
         _enemyHealth.health -= amount / _enemyHealth.resistance;
         if (_enemyHealth.health <= 0)
         {
@@ -61,7 +62,7 @@ public class EnemyController : Controller, IDamageable
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.collider.tag != "Player") return;
+        if (!collision.collider.CompareTag("Player")) return;
 
         collision.collider.TryGetComponent(out IDamageable damageable);
         if (damageable != null)
