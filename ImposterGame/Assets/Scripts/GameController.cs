@@ -48,6 +48,8 @@ public sealed class GameController : MonoBehaviour
 
     private void SceneChange(Scene scene, LoadSceneMode mode)
     {
+        if (scene.name == "EndGameScene") { Destroy(gameObject); return; }
+
         var startObject = scene.GetRootGameObjects().Where(x => x.name.Contains("StartPosition")).FirstOrDefault();
         if (startObject != null)
         {
