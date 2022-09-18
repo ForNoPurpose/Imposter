@@ -10,7 +10,9 @@ public class ChaseState : AIStateSO
 
     private void OnEnable()
     {
-        _target = GameObject.FindObjectOfType<PlayerController>().transform;
+        var temp = FindObjectOfType<PlayerController>();
+        if (temp != null)
+            _target = temp.transform;   
     }
 
     public override void State(Controller controller)
