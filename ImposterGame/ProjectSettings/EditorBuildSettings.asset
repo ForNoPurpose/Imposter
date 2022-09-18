@@ -27,6 +27,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Level1_2_Office.unity
     guid: be68a55f38b47954fba9d0dfaf5693b5
   - enabled: 1
+    path: Assets/Scenes/Level1_2_BigOffice.unity
+    guid: 001d1b4e644ea624791bd30de3f3acee
+  - enabled: 1
     path: Assets/Scenes/Level1_BossScene.unity
     guid: dd4ee28bba4c11849afdf6fd05852a2d
   - enabled: 1
