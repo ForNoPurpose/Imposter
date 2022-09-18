@@ -249,6 +249,11 @@ MonoBehaviour:
   speed: 5
   jumpSpeed: 10
   body: {fileID: 0}
+  _jumpableLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+  _jumpColliderRadius: 0.2
+  _jumpColliderOffset: {x: 0, y: -1, z: 0}
 --- !u!114 &7645009075282828564
 MonoBehaviour:
   m_ObjectHideFlags: 0

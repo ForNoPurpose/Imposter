@@ -9,6 +9,7 @@ TagManager:
   - MainMenu
   - Enemy
   - LevelOneDoor
+  - LevelBounds
   layers:
   - Default
   - TransparentFX

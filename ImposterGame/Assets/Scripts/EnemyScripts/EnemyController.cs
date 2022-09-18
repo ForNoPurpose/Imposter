@@ -20,7 +20,7 @@ public class EnemyController : Controller, IDamageable
     private Collider2D[] _colliders = new Collider2D[3];
     private int _numFound = 0;
 
-    private void Start()
+    private void Awake()
     {
         _enemyAnimator = GetComponent<Animator>();
         _enemyRB = GetComponent<Rigidbody2D>();

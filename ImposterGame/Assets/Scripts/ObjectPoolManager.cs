@@ -21,11 +21,11 @@ public class ObjectPoolManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(this);
+            //DontDestroyOnLoad(this);
         }
         else
         {
-            Destroy(this);
+            //Destroy(this);
         }
     }
 
@@ -54,8 +54,7 @@ public class ObjectPoolManager : MonoBehaviour
         }
 
         GameObject objectToSpawn = poolDictionary[tag].Dequeue();
-        objectToSpawn.transform.position = position;
-        objectToSpawn.transform.rotation = rotation;
+        objectToSpawn.transform.SetPositionAndRotation(position, rotation);
         objectToSpawn.SetActive(true);
 
         poolDictionary[tag].Enqueue(objectToSpawn);
