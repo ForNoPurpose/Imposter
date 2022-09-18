@@ -5,14 +5,14 @@ using UnityEngine;
 public class KeyHolder : MonoBehaviour
 {
     [SerializeField] private List<KeyType> _keyList;
-    private void Awake()
+    private void Start()
     {
         OpenDoor.OnUnlock += RemoveKey;
         SceneObject.OnPickup += AddKey;
         _keyList = new List<KeyType>();
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         OpenDoor.OnUnlock -= RemoveKey;
         SceneObject.OnPickup -= AddKey;

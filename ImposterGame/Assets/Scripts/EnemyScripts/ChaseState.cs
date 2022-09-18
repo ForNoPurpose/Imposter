@@ -10,7 +10,9 @@ public class ChaseState : AIStateSO
 
     private void OnEnable()
     {
-        _target = GameObject.FindGameObjectWithTag(_targetTag).transform;
+        var temp = FindObjectOfType<PlayerController>();
+        if (temp != null)
+            _target = temp.transform;   
     }
 
     public override void State(Controller controller)
@@ -19,7 +21,7 @@ public class ChaseState : AIStateSO
         {
             controller.TryGetComponent(out Animator _enemyAnimator);
             controller.transform.localScale = new Vector3(
-                Mathf.Sign(controller.transform.position.x - _target.position.x) * controller.transform.localScale.x,
+                Mathf.Sign(controller.transform.position.x - _target.position.x) * Mathf.Abs(controller.transform.localScale.x),
                 controller.transform.localScale.y,
                 controller.transform.localScale.z
                 );

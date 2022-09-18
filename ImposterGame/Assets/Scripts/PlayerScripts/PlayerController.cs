@@ -25,12 +25,12 @@ public class PlayerController : MonoBehaviour, IDamageable
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(this);
+            //DontDestroyOnLoad(this);
         }
-        else
-        {
-            Destroy(this);
-        }
+        //else
+        //{
+        //    Destroy(this);
+        //}
         playerHealth.health = 100 + playerLevel * 10;
         playerBufferMaxSize = 10 + playerLevel;
 
@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         PlayerAttack.OnThrow += RemoveFromBuffer;
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         SceneObject.OnPickup -= AddToBuffer;
         PlayerAttack.OnThrow -= RemoveFromBuffer;
