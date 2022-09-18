@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -42,6 +43,10 @@ public class BackgroundMusicManager : MonoBehaviour
             case "NewGameScene":
                 audioSource.enabled = false;
                 replacementSource.enabled = false;
+                break;
+
+            case "Level1_BossScene":
+                replacementSource.clip = backgroundMusicClips[2];
                 break;
 
             default:
