@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Level1_2.unity
     guid: 94192d561cea9864cb0e66e83db1c937
   - enabled: 1
+    path: Assets/Scenes/Level1_2_Breakroom.unity
+    guid: 9d16a560f08ea3f4090ab438071da08b
+  - enabled: 1
     path: Assets/Scenes/Level1_2_Office.unity
     guid: be68a55f38b47954fba9d0dfaf5693b5
   - enabled: 1
