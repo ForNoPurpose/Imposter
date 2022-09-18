@@ -6,18 +6,22 @@ using CustomUtilities;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] public float speed = 3f;
+    public float speed = 3f;
     [SerializeField] private float jumpSpeed = 4f;
     private Vector2 moveInput;
     public Rigidbody2D body;
-    private BoxCollider2D playerCollider;
     private Animator playerAnimator;
-
     public PlayerInputActions inputActions;
+
+    Collider2D[] _onGround = new Collider2D[2];
+    int _numFound = 0;
+    [SerializeField] LayerMask _jumpableLayer;
+    [SerializeField] float _jumpColliderRadius;
+    [SerializeField] Vector3 _jumpColliderOffset;
+
     private void Awake()
     {
         body = GetComponent<Rigidbody2D>();
-        playerCollider = GetComponent<BoxCollider2D>();
         playerAnimator = GetComponent<Animator>();
 
         inputActions = new PlayerInputActions();
@@ -32,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        _numFound = Physics2D.OverlapCircleNonAlloc(transform.position + _jumpColliderOffset, _jumpColliderRadius, _onGround, _jumpableLayer);
         Run();
         FlipPlayer();
     }
@@ -41,22 +46,25 @@ public class PlayerMovement : MonoBehaviour
         return new Vector2(body.position.x, body.position.y);
     }
 
+
     private void Jump(InputAction.CallbackContext context)
     {
-        RaycastHit2D feetOnGround = Physics2D.Raycast(playerCollider.bounds.center, Vector3.down, playerCollider.bounds.extents.y + 0.03f, LayerMask.GetMask("Ground"));
-        Debug.DrawRay(playerCollider.bounds.center, Vector3.down, Color.red, 2f);
-        //Debug.Log(feetOnGround.collider.name);
-        if (feetOnGround.collider == null)
+        if (_numFound == 0)
         {
-            Debug.Log("Can't Jump"); 
+            Debug.Log("Can't Jump");
             return;
         }
         else
         {
             body.velocity += new Vector2(0, jumpSpeed);
             AudioManager.instance.PlaySound("JumpSound");
-            //Debug.DrawLine(playerCollider.bounds.center, playerCollider.bounds.center - new Vector3(0,playerCollider.bounds.extents.y + 0.03f, 0), Color.red, 5f);
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position + _jumpColliderOffset, _jumpColliderRadius);
     }
 
     private void Run()
@@ -72,13 +80,24 @@ public class PlayerMovement : MonoBehaviour
         else
             playerAnimator.SetBool("isRunning", false);
     }
+
     private void FirstStep()
     {
+        if (_numFound == 0)
+        {
+            AudioManager.instance.StopSound("FirstFootStep");
+            return;
+        }
         AudioManager.instance.PlaySound("FirstFootStep");
     }
-    
+
     private void SecondStep()
     {
+        if (_numFound == 0)
+        {
+            AudioManager.instance.StopSound("SecondFootStep");
+            return;
+        }
         AudioManager.instance.PlaySound("SecondFootStep");
     }
 
