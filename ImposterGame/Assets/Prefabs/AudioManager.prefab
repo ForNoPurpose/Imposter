@@ -47,25 +47,25 @@ MonoBehaviour:
   sounds:
   - name: FirstFootStep
     audioClip: {fileID: 8300000, guid: 905e701a18054d940bf9b830d8f91aa0, type: 3}
-    volume: 0.06
-    pitch: 0.645
+    volume: 0.03
+    pitch: 0.8
     randomVolumeRange: 0.1
     randomPitchRange: 0.142
   - name: MeleeSound
     audioClip: {fileID: 8300000, guid: 94e671a1c8fb68d44b58c89eb04a47f8, type: 3}
-    volume: 0.106
+    volume: 0.08
     pitch: 0.853
     randomVolumeRange: 0.081
     randomPitchRange: 0.157
   - name: JumpSound
     audioClip: {fileID: 8300000, guid: af458e522ef44bb47872d01d2cba87f8, type: 3}
-    volume: 0.125
+    volume: 0.1
     pitch: 0.85
     randomVolumeRange: 0.081
     randomPitchRange: 0.016
   - name: DoorSound
     audioClip: {fileID: 8300000, guid: 3700a0646c78cb74499a17f1749439d2, type: 3}
-    volume: 0.149
+    volume: 0.1
     pitch: 1.08
     randomVolumeRange: 0.081
     randomPitchRange: 0.016
@@ -77,8 +77,8 @@ MonoBehaviour:
     randomPitchRange: 0.016
   - name: SecondFootStep
     audioClip: {fileID: 8300000, guid: 3f96da95ed870d449ad181a8e9de8349, type: 3}
-    volume: 0.06
-    pitch: 0.659
+    volume: 0.03
+    pitch: 0.8
     randomVolumeRange: 0.081
     randomPitchRange: 0.123
   - name: ScanSound
@@ -105,21 +105,9 @@ MonoBehaviour:
     pitch: 1
     randomVolumeRange: 0
     randomPitchRange: 0
-  - name: MainMenuSong
-    audioClip: {fileID: 8300000, guid: 0200b28e7f44ab64d8ab0bd28326a31c, type: 3}
-    volume: 0.077
-    pitch: 1
-    randomVolumeRange: 0
-    randomPitchRange: 0
-  - name: GameplaySong
-    audioClip: {fileID: 8300000, guid: 2c8d88a8ee53130438bd49c1ad376b01, type: 3}
-    volume: 0.077
-    pitch: 1
-    randomVolumeRange: 0
-    randomPitchRange: 0
   - name: DamageSound
     audioClip: {fileID: 8300000, guid: 19ef33582143bb74ca497eb354b0a7e0, type: 3}
-    volume: 0.077
+    volume: 0.05
     pitch: 1
     randomVolumeRange: 0
     randomPitchRange: 0.067
