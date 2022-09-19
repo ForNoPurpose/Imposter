@@ -16,10 +16,10 @@ About :
 Currently :
 </h3>
 
-- 9/18/2022 First demo level (rough draft) is complete and playable
+- 9/18/2022 First demo level (rough draft) is working and playable
 - 1 level with 3 main scenes and 4 sub-scenes
-- Main menu complete
-- Introduction cutscene complete
+- Main menu working
+- Introduction cutscene working
 - Background music and sound effects working
 
 ---
